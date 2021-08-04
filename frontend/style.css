@@ -1,0 +1,13 @@
+body {
+    margin: 1%;
+    background-color: rgb(204, 197, 204);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+header {
+    background-color: rgb(48, 47, 47);
+    color: rgb(245, 243, 243);
+    display: flex;
+    justify-content: center;
+}
