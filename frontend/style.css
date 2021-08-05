@@ -5,7 +5,7 @@ body {
     font-size: 16px;
 }
 
-header {
+.header-banniere {
     background-color: rgb(48, 47, 47);
      display: flex;
     align-items: center;
@@ -28,15 +28,18 @@ header {
     align-items: center;
     color:rgb(245, 243, 243);
     text-align: right;
+    margin-right: 30px;
 }
 
 .fa-shopping-cart {
-    font-size: large;
+    font-size: larger;
+    cursor: pointer;
 }
 
 aside {
     display: flex;
     justify-content: center;
+    position: relative;
 
 }
 
@@ -50,9 +53,18 @@ img {
 
 .presentation {
     position: absolute;
+    left: 20px;
+    bottom:150px;
     z-index: 1;
-    display: flex;
+    white-space: pre-line;
+   
+    font-style: italic;
    
     color: rgb(231, 225, 225);
-    
+}
+
+
+.header-produits {
+    display: flex;
+    justify-content: center;
 }
