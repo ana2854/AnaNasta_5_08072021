@@ -7,23 +7,52 @@ body {
 
 header {
     background-color: rgb(48, 47, 47);
-    color: rgb(245, 243, 243);
-    display: flex;
-    justify-content: center;
+     display: flex;
+    align-items: center;
+   
     padding : 15px;
+
+
+}
+
+.nameLogo {
+    flex: 30%;
+    text-align: left;
+    color: rgb(245, 243, 243);
+
+  
+}
+
+.cart {
+    flex:5%;
+    align-items: center;
+    color:rgb(245, 243, 243);
+    text-align: right;
+}
+
+.fa-shopping-cart {
+    font-size: large;
 }
 
 aside {
     display: flex;
     justify-content: center;
 
-    border: 3px solid green;
 }
 
 img {
    
-    filter: brightness(90%);
+    filter: brightness(80%);
     object-fit: cover;
     height: 400px;
-    width: auto;
+    width: 100%;
+}
+
+.presentation {
+    position: absolute;
+    z-index: 1;
+    display: flex;
+   
+    color: rgb(231, 225, 225);
+    
 }
