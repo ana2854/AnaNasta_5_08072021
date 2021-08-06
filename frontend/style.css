@@ -36,6 +36,11 @@ body {
     cursor: pointer;
 }
 
+.cart a {
+    text-decoration: none;
+    color: white;
+}
+
 aside {
     display: flex;
     justify-content: center;
