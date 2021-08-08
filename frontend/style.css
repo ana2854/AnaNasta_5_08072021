@@ -1,9 +1,12 @@
 body {
-    margin: auto;
+    margin: 0 1%;
     background-color: rgb(204, 197, 204);
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
+   
 }
+
+/* INDEX PAGE ACCUEIL */
 
 .header-banniere {
     background-color: rgb(48, 47, 47);
@@ -36,7 +39,7 @@ body {
     cursor: pointer;
 }
 
-.cart a {
+.accueil-cart a {
     text-decoration: none;
     color: white;
 }
@@ -73,3 +76,29 @@ img {
     display: flex;
     justify-content: center;
 }
+
+#produits {
+    width: 100%;
+}
+
+.peluches {
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.peluches div {
+    background-color: grey;
+    border-radius: 10px;
+
+}
+
+
+/* CART PAGE */
+
+.cart-empty {
+    text-align: center;
+}
+
