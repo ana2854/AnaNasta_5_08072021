@@ -16,11 +16,17 @@ return response.json();
 });
 */
 
+
+
 const url = 'http://localhost:3000/api/teddies';
 async function getBears () {
     const response = await fetch (url);
     const data = await response.json();
-    console.log(data);
+    const [name] = data;
+
+    document.getElementById('norbert').textContent = name;
+  
 }
 
 getBears();
+
