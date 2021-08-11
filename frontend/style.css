@@ -81,19 +81,14 @@ img {
     width: 100%;
 }
 
-.peluches {
+#peluches {
 
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
+    background-color: rgb(63, 175, 240);
 
-.peluches div {
-    background-color: grey;
-    border-radius: 10px;
+    border: 3px solid green;
 
 }
+
 
 
 /* CART PAGE */

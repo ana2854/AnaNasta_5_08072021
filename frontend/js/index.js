@@ -52,15 +52,57 @@ fetch("http://localhost:3000/api/teddies")
 
     */
 
+    
+
     const getBears = async function () {
-        let response = await fetch ('http://localhost:3000/api/teddies')
-        if (response.ok) {
-             let data = await response.json()
-        console.log (data);
-        } else {
-            console.error('Retour du serveur' , response.status)
+    try {
+            let response = await fetch ('http://localhost:3000/api/teddies')
+            if (response.ok) {
+                let data = await response.json()
+            console.log (data);
+            affichagePeluches(data);
+
+            } else {
+                console.error('Retour du serveur' , response.status)
+            }
+            } catch (e) {
+                console.log(e);
+            }
         }
-       
-    }
 
     getBears();
+
+    /* EXEMPLE JORDI POUR AFFICHAGE PELUCHES 
+
+function affichagePeluches(data) {
+    let peluches = document.getElementById("peluches")
+
+    let content = '';
+
+   for (let i = 0 ; i < data.length; i++) 
+     
+    {
+         content += 
+            '<div>'+ data[i].name + '</div>'+
+            '<div>'+ data[i].price + '</div>';
+    }
+
+    peluches.innerHTML= content;
+
+}
+
+*/
+
+function affichagePeluches(data) {
+    const peluche = data[0];
+    const pelucheDiv = document.getElementById('peluches');
+
+    const pelucheNom = peluche.name;
+    const titre = document.createElement("h1");
+    titre.innerHTML = pelucheNom;
+
+    pelucheDiv.appendChild(titre);
+
+}
+
+  
