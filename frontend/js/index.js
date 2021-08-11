@@ -103,6 +103,12 @@ function affichagePeluches(data) {
 
     pelucheDiv.appendChild(titre);
 
+    const pelucheImg = document.createElement('img');
+    pelucheImg.src = peluche.imageUrl;
+
+    pelucheDiv.appendChild(pelucheImg);
+
+
 }
 
   
