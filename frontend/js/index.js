@@ -36,28 +36,16 @@ getBears();
 
 /*
 
-fetch("http://localhost:3000/api/teddies")
-    .then(response => response.json())
-    .then(peluches => {
-        const ul = document.getElementById('peluches');
-        peluches.forEach(peluche => {
-             peluche = new Peluches(peluche);
-             peluche.setContainer(ul);
-             peluche.display('peluches');
-        })
-    })
-    .catch(function (error){
-        console.log(error)
-    });
-
-    */
 
     
-
+    /* On définit la fonction asynchrone */
     const getBears = async function () {
     try {
+
+            /*On stock la reponse*/
             let response = await fetch ('http://localhost:3000/api/teddies')
             if (response.ok) {
+                /* On stock les datas en format json */
                 let data = await response.json()
             console.log (data);
             affichagePeluches(data);
@@ -70,12 +58,20 @@ fetch("http://localhost:3000/api/teddies")
             }
         }
 
+    /*on appelle la fonction*/
     getBears();
 
-    /* EXEMPLE JORDI POUR AFFICHAGE PELUCHES 
+    /*EXEMPLE JORDI POUR AFFICHAGE PELUCHES */
 
 function affichagePeluches(data) {
-    let peluches = document.getElementById("peluches")
+
+    let peluches = document.getElementById("peluches");
+
+    let div = document.createElement('div');
+
+    div.className = "ours";
+
+    peluches.appendChild(div);
 
     let content = '';
 
@@ -84,31 +80,10 @@ function affichagePeluches(data) {
     {
          content += 
             '<div>'+ data[i].name + '</div>'+
-            '<div>'+ data[i].price + '</div>';
+            '<p>'+ data[i].price + '</p>'
     }
 
-    peluches.innerHTML= content;
+    div.innerHTML= content;
 
 }
 
-*/
-
-function affichagePeluches(data) {
-    const peluche = data[0];
-    const pelucheDiv = document.getElementById('peluches');
-
-    const pelucheNom = peluche.name;
-    const titre = document.createElement("h1");
-    titre.innerHTML = pelucheNom;
-
-    pelucheDiv.appendChild(titre);
-
-    const pelucheImg = document.createElement('img');
-    pelucheImg.src = peluche.imageUrl;
-
-    pelucheDiv.appendChild(pelucheImg);
-
-
-}
-
-  

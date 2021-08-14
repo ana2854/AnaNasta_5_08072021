@@ -82,12 +82,17 @@ img {
 }
 
 #peluches {
+    background-color: yellow;
+}
+
+.ours {
 
     background-color: rgb(63, 175, 240);
 
-    border: 3px solid green;
+    border: 5px solid green;
 
-    width: 30%;
+    width: 50%;
+   
 
 }
 
