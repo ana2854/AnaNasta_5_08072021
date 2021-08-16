@@ -46,9 +46,10 @@ getBears();
             let response = await fetch ('http://localhost:3000/api/teddies')
             if (response.ok) {
                 /* On stock les datas en format json */
-                let data = await response.json()
+            let data = await response.json()
             console.log (data);
             affichagePeluches(data);
+           
 
             } else {
                 console.error('Retour du serveur' , response.status)
@@ -61,29 +62,32 @@ getBears();
     /*on appelle la fonction*/
     getBears();
 
-    /*EXEMPLE JORDI POUR AFFICHAGE PELUCHES */
+   
 
 function affichagePeluches(data) {
+let ours = document.getElementById("peluches");
+let div = document.createElement('div');
+div.className = "ours";
+peluches.appendChild(div);
 
-    let peluches = document.getElementById("peluches");
-
-    let div = document.createElement('div');
-
-    div.className = "ours";
-
-    peluches.appendChild(div);
+  
 
     let content = '';
 
    for (let i = 0 ; i < data.length; i++) 
+
      
     {
          content += 
-            '<div>'+ data[i].name + '</div>'+
-            '<p>'+ data[i].price + '</p>'
+
+          `<img class= "${data[i]._id}" "onclick=location.href='product.html?id=${data[i]._id}'" "src="${data[i].imageUrl}"/>
+            <p> Nom :   ${data[i].name}  </p>
+            <p> Prix : ${data[i].price} €  </p>
+            <p>  Description :  ${data[i].description} </p>;`
     }
 
-    div.innerHTML= content;
+    div.innerHTML = content;
 
 }
+
 
