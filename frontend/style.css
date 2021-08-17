@@ -51,7 +51,7 @@ aside {
 
 }
 
-aside img {
+img {
    
     filter: brightness(80%);
     object-fit: cover;
@@ -91,7 +91,7 @@ aside img {
 
     border: 5px solid rgb(249, 252, 249);
 
-    width: 50%;
+    width: 80%;
    
 
 }

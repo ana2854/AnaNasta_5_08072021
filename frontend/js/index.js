@@ -64,30 +64,43 @@ getBears();
 
    
 
+
 function affichagePeluches(data) {
-let ours = document.getElementById("peluches");
-let div = document.createElement('div');
-div.className = "ours";
-peluches.appendChild(div);
+    let ours = document.getElementById("peluches");
 
-  
+    for (let i = 0 ; i < data.length; i++) {
+        let div = document.createElement('div');
+        div.className = "ours";
+        ours.appendChild(div);
 
-    let content = '';
+        let link = "product.html?id=" + data[i]._id;
 
-   for (let i = 0 ; i < data.length; i++) 
+        let content = '';
 
-     
-    {
-         content += 
+        content += "<a href=" + link + ">";
 
-          `<img class= "${data[i]._id}" "onclick=location.href='product.html?id=${data[i]._id}'" "src="${data[i].imageUrl}"/>
+        content +=  
+            "<img" +
+            " class=" + data[i]._id +
+            " src=" + data[i].imageUrl + 
+            ">";
+
+        content += 
+        `
             <p> Nom :   ${data[i].name}  </p>
             <p> Prix : ${data[i].price} €  </p>
-            <p>  Description :  ${data[i].description} </p>;`
+            <p> Description :  ${data[i].description} </p>
+        `;
+
+        content += "</a>";
+
+        div.innerHTML = content;
     }
-
-    div.innerHTML = content;
-
 }
+
+
+
+
+
 
 
