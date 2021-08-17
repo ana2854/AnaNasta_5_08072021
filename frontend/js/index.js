@@ -81,7 +81,7 @@ function affichagePeluches(data) {
 
         content +=  
             "<img" +
-            " class=" + data[i]._id +
+            " class="+ data[i]._id +
             " src=" + data[i].imageUrl + 
             ">";
 
