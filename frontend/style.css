@@ -82,7 +82,7 @@ aside > img {
 }
 
 #peluches {
-    background-color: rgb(211, 241, 210);
+    background-color: transparent;
 
     display: flex;
     flex-direction: row;
@@ -94,6 +94,8 @@ aside > img {
 .ours {
 
     background-color: #cfe0ce;
+
+ 
 
     border: 5px solid rgb(244, 248, 21);
 
@@ -143,8 +145,9 @@ aside > img {
     padding: 10px;
     border-radius: 10px;
     outline: none;
+    border: 1px solid grey;
     margin: 10px 0 0 0;
-    background-color: rgb(58, 150, 153);
+    background-color: rgb(104, 204, 204);
 }
 
 .quantite input {
