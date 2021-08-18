@@ -121,6 +121,11 @@ aside > img {
 
 /* PAGE PRODUIT */
 
+#produit {
+    display: flex;
+    justify-content: center;
+    margin: 5%;
+}
 .select {
     padding: 10px;
     width: 100%;
@@ -128,6 +133,10 @@ aside > img {
     border: transparent;
     outline: none;
     
+}
+
+.btn-ajout-produit {
+    width: 100%;
 }
 
 

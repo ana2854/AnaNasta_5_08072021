@@ -21,3 +21,6 @@ console.log(`Value for 'id' is : ${idProduct}`)
 for (const [key, value] of a) {
     console.log(`${key} => ${value}`)
 }
+
+
+
