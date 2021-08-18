@@ -126,7 +126,8 @@ aside > img {
     justify-content: center;
     margin: 5%;
 }
-.select {
+
+.select{
     padding: 10px;
     width: 100%;
     border-radius: 10px;
@@ -135,9 +136,35 @@ aside > img {
     
 }
 
+
+
 .btn-ajout-produit {
     width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    outline: none;
+    margin: 10px 0 0 0;
+    background-color: rgb(58, 150, 153);
 }
+
+.quantite input {
+    padding: 5px;
+    width: 80%;
+    border-radius: 5px;
+    border: transparent;
+    text-align: center;
+    outline: none;
+}
+
+.quantite {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    
+}
+
+
 
 
 /* CART PAGE */
