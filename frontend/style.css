@@ -26,6 +26,11 @@ body {
   
 }
 
+.nameLogo a {
+    text-decoration: none;
+    color: white;
+}
+
 .cart {
     flex:5%;
     align-items: center;
@@ -39,7 +44,7 @@ body {
     cursor: pointer;
 }
 
-.accueil-cart a {
+.cart a {
     text-decoration: none;
     color: white;
 }
