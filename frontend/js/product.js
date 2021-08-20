@@ -73,6 +73,7 @@ function getArticles() {
 async function AfficherUnProduit() {
     const idActual = await getArticles()
     console.log(idActual)
-    document.getElementById('produit').innerHTML += `
-    <p>j'ajoute un paragraphe pour voir si on le voit dans la console</p>
+    let divOursProduit = document.querySelector('#produit .ours')
+    divOursProduit.innerHTML += `
+    <p>j'ajoute un paragraphe pour voir si on le voit sur la page</p>
     `}
