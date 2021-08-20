@@ -70,7 +70,7 @@ function affichagePeluches(data) {
 
     for (let i = 0 ; i < data.length; i++) {
         let div = document.createElement('div');
-        div.className = "ours";
+        div.className = "ours accueil";
         ours.appendChild(div);
 
         let link = "product.html?id=" + data[i]._id;

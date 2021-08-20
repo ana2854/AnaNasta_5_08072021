@@ -73,7 +73,7 @@ function getArticles() {
 async function AfficherUnProduit() {
     const idActual = await getArticles()
     console.log(idActual)
-    let divOursInfos = document.querySelector('#produit .ours')
+    let divOursInfo = document.querySelector('#produit .ours.info')
 
     let content = '';
 
@@ -87,7 +87,7 @@ async function AfficherUnProduit() {
     
     content+= `
 
-    <img> ${idActual.imageUrl} 
+    
     <p> Nom :   ${idActual.name}  </p>
     <p> Prix : ${idActual.price} €  </p>
     <p> Description :  ${idActual.description} </p>
@@ -111,6 +111,6 @@ async function AfficherUnProduit() {
 
 <button class="btn-ajout-produit" type="button">Ajouter au panier</button>`;
 
-divOursInfos.innerHTML = content
+divOursInfo.innerHTML = content
 
 }

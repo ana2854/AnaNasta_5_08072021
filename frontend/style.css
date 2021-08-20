@@ -96,11 +96,9 @@ aside > img {
     margin: 20px;
 }
 
-.ours {
+.ours.accueil {
 
     background-color: #cfe0ce;
-
- 
 
     border: 5px solid rgb(244, 248, 21);
 
@@ -132,15 +130,18 @@ aside > img {
     display: flex;
     justify-content: center;
     margin: 5%;
-    background-color: cadetblue;
+    
 }
 
-.ours {
-    width: 70%;
-}
+.ours.info {
+    width: 60%;
+   
 
-.info {
+    border-radius: 10px;
+
     padding: 15px;
+
+    background-color: #cfe0ce;
 }
 
 .select{
