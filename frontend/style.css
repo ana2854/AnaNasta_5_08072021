@@ -132,6 +132,7 @@ aside > img {
     display: flex;
     justify-content: center;
     margin: 5%;
+    background-color: cadetblue;
 }
 
 .select{
@@ -151,8 +152,9 @@ aside > img {
     border-radius: 10px;
     outline: none;
     border: 1px solid grey;
-    margin: 10px 0 0 0;
+    margin: 20px 0 0 0;
     background-color: rgb(104, 204, 204);
+    cursor: pointer;
 }
 
 .quantite input {
