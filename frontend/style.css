@@ -135,6 +135,14 @@ aside > img {
     background-color: cadetblue;
 }
 
+.ours {
+    width: 70%;
+}
+
+.info {
+    padding: 15px;
+}
+
 .select{
     padding: 10px;
     width: 100%;
@@ -175,7 +183,7 @@ aside > img {
 }
 
 
-
+/*FIN PAGE PRODUIT */
 
 /* CART PAGE */
 

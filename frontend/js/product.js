@@ -73,7 +73,44 @@ function getArticles() {
 async function AfficherUnProduit() {
     const idActual = await getArticles()
     console.log(idActual)
-    let divOursProduit = document.querySelector('#produit .ours')
-    divOursProduit.innerHTML += `
-    <p>j'ajoute un paragraphe pour voir si on le voit sur la page</p>
-    `}
+    let divOursInfos = document.querySelector('#produit .ours')
+
+    let content = '';
+
+
+    content += 
+
+    "<img" +
+            " id="+ idActual._id +
+            " src=" + idActual.imageUrl + 
+            ">";
+    
+    content+= `
+
+    <img> ${idActual.imageUrl} 
+    <p> Nom :   ${idActual.name}  </p>
+    <p> Prix : ${idActual.price} €  </p>
+    <p> Description :  ${idActual.description} </p>
+     
+    <p>Sélectionner une couleur</p>
+    <select class="select">
+            <option selected disabled>Choisissez une couleur</option>
+            <option value="couleur tan">Brun clair</option>
+            <option value="couleur chocolat">Chocolat</option>
+            <option value="couleur noir">Noir</option>
+            <option value="couleur blanc">Blanc</option>
+        
+    
+    </select>
+
+    <p>Sélectionner la quantité </p>
+
+
+    <div class="quantite">  <input type="number" name= "quantity" id="quantity" value="1"></div>
+
+
+<button class="btn-ajout-produit" type="button">Ajouter au panier</button>`;
+
+divOursInfos.innerHTML = content
+
+}
