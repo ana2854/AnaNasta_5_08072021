@@ -100,17 +100,20 @@ aside > img {
 
     background-color: #cfe0ce;
 
-    border: 5px solid rgb(244, 248, 21);
+   margin : 20px;
 
     width: 25%;
 
     border-radius: 20px;
+
+    padding: 10px;
 
    
 
 }
 
 .ours img {
+    object-fit: cover;
     width: 100%;
     border-radius: 15px 15px 0 0;
 }
@@ -133,9 +136,15 @@ aside > img {
     
 }
 
-.ours.info {
-    width: 60%;
+.ours.info img {
+    object-fit: cover;
+    height: 500px;
    
+}
+
+.ours.info {
+    
+   width: 50%;
 
     border-radius: 10px;
 
@@ -144,24 +153,31 @@ aside > img {
     background-color: #cfe0ce;
 }
 
+
+
 .select{
     padding: 10px;
-    width: 100%;
+    width: 70%;
     border-radius: 10px;
     border: transparent;
     outline: none;
+    text-align: center;
     
 }
 
+.btn {
+    text-align: center;
+    width: 100%;
+}
 
 
 .btn-ajout-produit {
-    width: 100%;
-    padding: 10px;
+    width: 50%;
+    padding: 15px;
     border-radius: 10px;
     outline: none;
     border: 1px solid grey;
-    margin: 20px 0 0 0;
+    margin: 20px 0 20px 0;
     background-color: rgb(104, 204, 204);
     cursor: pointer;
 }

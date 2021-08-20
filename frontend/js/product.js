@@ -106,10 +106,15 @@ async function AfficherUnProduit() {
     <p>Sélectionner la quantité </p>
 
 
-    <div class="quantite">  <input type="number" name= "quantity" id="quantity" value="1"></div>
+    <div class="quantite">  <input type="number"  value="1"></div>
 
+<div class="btn">
+    <button class="btn-ajout-produit" type="button">Ajouter au panier</button>
+</div>
 
-<button class="btn-ajout-produit" type="button">Ajouter au panier</button>`;
+</div>
+
+</div>`;
 
 divOursInfo.innerHTML = content
 
