@@ -31,7 +31,7 @@ body {
     color: white;
 }
 
-.cart {
+.cartLogo{
     flex:5%;
     align-items: center;
     color:rgb(245, 243, 243);
@@ -44,7 +44,7 @@ body {
     cursor: pointer;
 }
 
-.cart a {
+.cartLogo a {
     text-decoration: none;
     color: white;
 }
@@ -152,6 +152,8 @@ aside > img {
 
     background-color: #cfe0ce;
 }
+
+
 
 
 

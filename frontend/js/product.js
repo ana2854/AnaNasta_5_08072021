@@ -62,8 +62,8 @@ function getArticles() {
       .then(function (httpBodyResponse) {
        return httpBodyResponse.json()
       })
-      .then(function (idActual) {
-        return idActual
+      .then(function (idProduit) {
+        return idProduit
       })
       .catch(function (error) {
         alert(error)
@@ -71,9 +71,21 @@ function getArticles() {
 }
 
 async function AfficherUnProduit() {
-    const idActual = await getArticles()
-    console.log(idActual)
+    const idProduit = await getArticles()
+    console.log(idProduit)
     let divOursInfo = document.querySelector('#produit .ours.info')
+
+    let prixProduit = document.querySelectorAll('#produit .ours.info').textContent;
+    console.log(prixProduit);
+
+    let originalPrice = idProduit.price;
+    /*console.log(new Intl.NumberFormat('fr-FR',{style:'currency', currency:'EUR'}).format(price));*/
+    let price = (originalPrice / 100).toFixed(2);
+    console.log(price);
+    
+    
+
+    
 
     let content = '';
 
@@ -81,17 +93,18 @@ async function AfficherUnProduit() {
     content += 
 
     "<img" +
-            " id="+ idActual._id +
-            " src=" + idActual.imageUrl + 
+            " id="+ idProduit._id +
+            " src=" + idProduit.imageUrl + 
             ">";
     
     content+= `
 
     
-    <p> Nom :   ${idActual.name}  </p>
-    <p> Prix : ${idActual.price} €  </p>
-    <p> Description :  ${idActual.description} </p>
+    <p> Nom :   ${idProduit.name}  </p>
+    <p class="prix-produit"> Prix : ${price} €  </p>
+    <p> Description :  ${idProduit.description} </p>
      
+
     <p>Sélectionner une couleur</p>
     <select class="select">
             <option selected disabled>Choisissez une couleur</option>
