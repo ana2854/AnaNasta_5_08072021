@@ -76,23 +76,28 @@ document.querySelectorAll('.minus-btn').setAttribute('disabled', 'disabled');
     
     <p> Description :  ${idProduit.description} </p>
      
-    <p>Sélectionner la quantité </p>
+    <p class="select">Sélectionner la quantité </p>
 
     <div class="quantity">
 
-        <p class="test"> Essai récupération de ce paragraphe</p>
+        <div class="total-price">
+            <p class="prix-produit"> Prix : ${price} €  </p>
+        </div>
 
+
+        <div class="btn-main">
+        
         <button class="btn minus-btn disabled" type="button">-</button>
 
         <input type="text" id="quantity" value="1">
 
         <button class="btn plus-btn" type="button">+</button>
 
-</div>
+        </div>
 
-<div class="total-price">
-    <p class="prix-produit"> Prix : ${price} €  </p>
-</div>
+        
+
+        </div>
 
 </div>`;
 
