@@ -105,6 +105,8 @@ function affichagePeluches(data) {
     }
 }
 
+/*localStorage.setItem('hello','there');*/
+
 
 
 

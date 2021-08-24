@@ -155,26 +155,14 @@ aside > img {
 
 
 
-
-
-.select{
-    padding: 10px;
-    width: 70%;
-    border-radius: 10px;
-    border: transparent;
-    outline: none;
-    text-align: center;
-    
-}
-
 .btn {
     text-align: center;
     width: 100%;
 }
 
 
-.btn-ajout-produit {
-    width: 50%;
+.btn-main {
+    width: 100%;
     padding: 15px;
     border-radius: 10px;
     outline: none;
@@ -184,22 +172,11 @@ aside > img {
     cursor: pointer;
 }
 
-.quantite input {
-    padding: 5px;
-    width: 80%;
-    border-radius: 5px;
-    border: transparent;
-    text-align: center;
-    outline: none;
-}
-
-.quantite {
+#quantity {
     width: 100%;
-    display: flex;
-    justify-content: center;
-
-    
+    text-align: center;
 }
+
 
 
 /*FIN PAGE PRODUIT */
