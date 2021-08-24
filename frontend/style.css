@@ -173,9 +173,35 @@ aside > img {
 }
 
 #quantity {
-    width: 100%;
+   
     text-align: center;
 }
+
+
+.quantity {
+    display: flex;
+    justify-content: center;
+}
+
+.quantity button {
+    width: 50px;
+    border: 1px solid #000;
+    color: #000;
+    border-radius: 0;
+    background: #fff
+}
+
+.quantity input {
+    border: none;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    text-align: center;
+    font-size: 20px;
+    color: #000;
+    font-weight: 200;
+    width: 50px;
+}
+
 
 
 

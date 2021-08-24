@@ -1,8 +1,4 @@
 
-
-
-
-
 AfficherUnProduit()
 
 function getArticles() {
@@ -33,12 +29,6 @@ async function AfficherUnProduit() {
     let price = (originalPrice / 100).toFixed(2);
    console.log(price)
    console.log(typeof(price));
-
-
-  
-   
-   
-   
 
    /*
 //bouton moins réglage 
@@ -71,8 +61,6 @@ document.querySelectorAll('.minus-btn').setAttribute('disabled', 'disabled');
    
 */
 
-
-
     let content = '';
 
 
@@ -96,7 +84,7 @@ document.querySelectorAll('.minus-btn').setAttribute('disabled', 'disabled');
 
         <button class="btn minus-btn disabled" type="button">-</button>
 
-        <input type="text" id="quantity" value="1">lskjlqkd
+        <input type="text" id="quantity" value="1">
 
         <button class="btn plus-btn" type="button">+</button>
 
@@ -110,10 +98,10 @@ document.querySelectorAll('.minus-btn').setAttribute('disabled', 'disabled');
 
 divOursInfo.innerHTML = content;
 
-let a = document.getElementsByClassName('test');
-let b = a[0].innerHTML;
+let a = document.getElementsByClassName('test')[0].innerHTML;;
 
-   console.log(b)
+
+   console.log(a)
 
 }
 
