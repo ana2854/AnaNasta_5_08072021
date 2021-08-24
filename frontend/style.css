@@ -157,8 +157,9 @@ aside > img {
 
 .quantity {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+   
+
    
 }
 
@@ -178,12 +179,19 @@ aside > img {
     cursor: pointer;
 }
 
+.btn-ajout-panier {
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+}
+
 .ajout-produit {
     padding: 15px;
     cursor: pointer;
-    margin: 15px;
     font-weight: bold;
     outline: none;
+
+   
     
 }
 
@@ -200,7 +208,7 @@ aside > img {
 
 .total-price {
     width: 25%;
-    border: 1px solid grey;
+    border: 1px solid rgb(248, 243, 192);
     margin: 10px;
 }
 
