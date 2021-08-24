@@ -30,36 +30,8 @@ async function AfficherUnProduit() {
    console.log(price)
    console.log(typeof(price));
 
-   /*
-//bouton moins réglage 
-document.querySelectorAll('.minus-btn').setAttribute('disabled', 'disabled');
-
-//valeur qui va augmenter ou diminuer 
-   let valueCount = '';
-
-//fonction calcul prix total 
-    function priceTotal () {
-        let total = valueCount * price;
-        document.querySelectorAll('.prix-produit').innerText = total;
-    }
-
-//bouton ajout produit 
-
-    document.querySelector(".plus-btn").addEventListener('click', function() {
-    valueCount = document.querySelectorAll('quantity').value;
-    valueCount ++;
-
-    document.querySelectorAll('quantity').value = valueCount;
-
-    if (valueCount > 1 ) {
-        document.querySelectorAll('.minus-btn').removeAttribute('disabled');
-        document.querySelectorAll('.minus-btn').classList.remove('disabled')
-    }
-    priceTotal();
-    })
    
-   
-*/
+
 
     let content = '';
 
@@ -75,16 +47,13 @@ document.querySelectorAll('.minus-btn').setAttribute('disabled', 'disabled');
     <p> Nom :   ${idProduit.name}  </p>
     
     <p> Description :  ${idProduit.description} </p>
-
-
     
-    <div class="total-price">
+    <div class="prix-total">
             <p class="prix-produit"> Prix : ${price} €  </p>
     </div>
 
 
     <div class="quantity">
-
 
             <div class="btn-quantite">
 
@@ -106,11 +75,37 @@ document.querySelectorAll('.minus-btn').setAttribute('disabled', 'disabled');
 
 divOursInfo.innerHTML = content;
 
-let a = document.getElementsByClassName('test')[0].innerHTML;;
 
+   
+//bouton moins réglage 
+let a = document.getElementsByClassName('.minus-btn').textContent;
+console.log(a) /*.setAttribute('disabled', 'disabled');
 
-   console.log(a)
+//valeur qui va augmenter ou diminuer 
+   let valueCount = '';
 
+//fonction calcul prix total 
+    function priceTotal () {
+        let total = valueCount * price;
+        document.getElementsByClassName('.prix-produit')[0].innerText = total;
+    }
+
+//bouton ajout produit 
+
+    document.getElementsByClassName(".plus-btn")[0].addEventListener('click', function() {
+    valueCount = document.getElementById('quantity')[0].value;
+    valueCount ++;
+
+    document.getElementById('quantity')[0].value = valueCount;
+
+    if (valueCount > 1 ) {
+        document.getElementsByClassName('.minus-btn')[0].removeAttribute('disabled');
+        document.getElementsByClassName('.minus-btn')[0].classList.remove('disabled')
+    }
+    priceTotal();
+    })
+   
+*/
 }
 
 

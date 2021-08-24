@@ -52,6 +52,7 @@ body {
 aside {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     position: relative;
 
 }
@@ -80,6 +81,7 @@ aside > img {
 .header-produits {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 #ensemble-produits {
@@ -128,6 +130,7 @@ aside > img {
 
 #produit {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     margin: 5%;
     
@@ -158,6 +161,7 @@ aside > img {
 .quantity {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
    
 
    
@@ -181,6 +185,7 @@ aside > img {
 
 .btn-ajout-panier {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     margin: 30px;
 }
@@ -206,10 +211,9 @@ aside > img {
     height: 30px;
 }
 
-.total-price {
-    width: 25%;
-    border: 1px solid rgb(248, 243, 192);
-    margin: 10px;
+.prix-total {
+   
+    margin-bottom: 10px;
 }
 
 
