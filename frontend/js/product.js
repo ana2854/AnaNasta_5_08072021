@@ -75,31 +75,34 @@ document.querySelectorAll('.minus-btn').setAttribute('disabled', 'disabled');
     <p> Nom :   ${idProduit.name}  </p>
     
     <p> Description :  ${idProduit.description} </p>
-     
-    <p class="select">Sélectionner la quantité </p>
+
+
+    
+    <div class="total-price">
+            <p class="prix-produit"> Prix : ${price} €  </p>
+    </div>
+
 
     <div class="quantity">
 
-        <div class="total-price">
-            <p class="prix-produit"> Prix : ${price} €  </p>
-        </div>
 
+            <div class="btn-quantite">
 
-        <div class="btn-main">
-        
-        <button class="btn minus-btn disabled" type="button">-</button>
+                <span>Quantité</span>
+            
+                <button class="btn minus-btn disabled" type="button">-</button>
 
-        <input type="text" id="quantity" value="1">
+                <input type="text" id="quantity" value="1">
 
-        <button class="btn plus-btn" type="button">+</button>
+                <button class="btn plus-btn" type="button">+</button>
 
-        </div>
+            </div>
+    </div> 
 
-        
+    <div class="btn-ajout-panier">
+            <button class="ajout-produit" type="button">Ajouter au panier</button>
 
-        </div>
-
-</div>`;
+    </div>`;
 
 divOursInfo.innerHTML = content;
 

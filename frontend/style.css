@@ -120,7 +120,7 @@ aside > img {
     color: black;
 }
 
-.ours p {
+.ours p, .ours span {
     margin-left: 10px;
 }
 
@@ -157,7 +157,7 @@ aside > img {
 
 .quantity {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
    
 }
@@ -166,7 +166,7 @@ aside > img {
     text-align: center;
 }
 
-.quantity button {
+.minus-btn, .plus-btn{
     width: 50px;
     height: 35px;
     border: 1px solid #000;
@@ -176,6 +176,15 @@ aside > img {
     font-weight: bold;
 
     cursor: pointer;
+}
+
+.ajout-produit {
+    padding: 15px;
+    cursor: pointer;
+    margin: 15px;
+    font-weight: bold;
+    outline: none;
+    
 }
 
 .quantity input {
@@ -190,7 +199,9 @@ aside > img {
 }
 
 .total-price {
-    width: 30%;
+    width: 25%;
+    border: 1px solid grey;
+    margin: 10px;
 }
 
 
