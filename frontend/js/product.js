@@ -9,52 +9,46 @@ function getArticles() {
       .then(function (response) {
        return response.json()
       })
-    .then(function (idProduit) {
+    /*.then(function (idProduit) {
         return idProduit
-      })
+      })*/
       .catch(function (error) {
         alert(error)
       })
 }
 
 async function AfficherUnProduit() {
-    const idProduit = await getArticles()
-    console.log(idProduit)
+    const produit = await getArticles()
+    console.log(produit)
     let divOursInfo = document.querySelector('#produit .ours.info')
 
    
     /*Le prix est divisé par 100*/
-    let originalPrice = idProduit.price;
+    let originalPrice = produit.price;
     /*console.log(new Intl.NumberFormat('fr-FR',{style:'currency', currency:'EUR'}).format(price));*/
     let price = (originalPrice / 100).toFixed(2);
    console.log(price)
    console.log(typeof(price));
 
-   
-
 
     let content = '';
-
 
     content += 
 
     "<img" +
-            " id="+ idProduit._id +
-            " src=" + idProduit.imageUrl + 
+            " id="+ produit._id +
+            " src=" + produit.imageUrl + 
             ">";
     
     content+= `
-    <p> Nom :   ${idProduit.name}  </p>
+    <p> Nom :   ${produit.name}  </p>
     
-    <p> Description :  ${idProduit.description} </p>
+    <p> Description :  ${produit.description} </p>
     
     <div class="prix-total">
             <p class="prix-produit"> Prix : ${price} €  </p>
     </div>
-
-
     <div class="quantity">
-
             <div class="btn-quantite">
 
                 <span>Quantité</span>
@@ -78,18 +72,19 @@ divOursInfo.innerHTML = content;
 
 
 document.getElementsByClassName('ajout-produit')[0].addEventListener('click', function() {
-    let a = localStorage.getItem('panier');
-
-    if (a === null) {
+    //Avant de mettre des données dans le local storage je vérifie d'abord s'il y a des données avec la methode get item
+    let contenu = (localStorage.getItem('panier'));
+    console.log(contenu)
+    /*if (contenu === null) {
         let tableauVide = [];
-        tableauVide.push(idProduit)
+        tableauVide.push(produit)
         localStorage.setItem('panier', tableauVide)
-    } else { console.log(a)
-        a.push(idProduit)
-        localStorage.setItem('panier', a)
-    }
-   
+    } else { 
+        contenu.push(produit)
+        localStorage.setItem('panier', JSON.stringify((contenu)))
+    }*/
 })
+
 
 
    /*
@@ -122,13 +117,3 @@ let a = document.getElementsByClassName('.minus-btn').setAttribute('disabled', '
    
 */
 }
-
-
-
-
-
-
-
-
-
-
