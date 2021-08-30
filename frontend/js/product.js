@@ -19,7 +19,7 @@ function getArticles() {
 
 async function AfficherUnProduit() {
     const produit = await getArticles()
-    console.log(produit)
+  
     let divOursInfo = document.querySelector('#produit .ours.info')
 
    
@@ -27,8 +27,7 @@ async function AfficherUnProduit() {
     let originalPrice = produit.price;
     /*console.log(new Intl.NumberFormat('fr-FR',{style:'currency', currency:'EUR'}).format(price));*/
     let price = (originalPrice / 100).toFixed(2);
-   console.log(price)
-   console.log(typeof(price));
+ 
 
 
     let content = '';
@@ -44,6 +43,16 @@ async function AfficherUnProduit() {
     <p> Nom :   ${produit.name}  </p>
     
     <p> Description :  ${produit.description} </p>
+
+    <select class="select">
+        <option selected disabled>Choisissez une couleur</option>
+    
+        <option value="couleur tan">Brun clair</option>
+        <option value="couleur chocolat">Chocolat</option>
+        <option value="couleur noir">Noir</option>
+        <option value="couleur blanc">Blanc</option>
+
+    </select>
     
     <div class="prix-total">
             <p class="prix-produit"> Prix : ${price} €  </p>
@@ -69,21 +78,90 @@ async function AfficherUnProduit() {
 
 divOursInfo.innerHTML = content;
 
+/*
+
+if(typeof(Storage) !== 'undefined') {
+    console.log('storage is working')
+}else {
+    console.log('storage not working')
+}
+
+*/
+
+/*
+
+//convertion d'un objet js en chaine de caractère json
+const objString = JSON.stringify(produit);
+//on reconvertit la chaine de caractère en objet js
+const parsedString = JSON.parse(objString)
+console.log(parsedString)
+console.log(typeof(parsedString))
+}*/
 
 
-document.getElementsByClassName('ajout-produit')[0].addEventListener('click', function() {
-    //Avant de mettre des données dans le local storage je vérifie d'abord s'il y a des données avec la methode get item
-    let contenu = (localStorage.getItem('panier'));
-    console.log(contenu)
-    /*if (contenu === null) {
+document.getElementsByClassName('ajout-produit')[0].addEventListener('click', function (add){
+    add.preventDefault() 
+
+     //Avant de mettre des données dans le local storage je vérifie d'abord s'il y a des données avec la methode get item
+
+     //convertion d'un objet en string pour les sauvegarder dans mon local storage
+
+
+   const contenu = JSON.stringify(produit);
+     /*localStorage.setItem("panier", contenu);*/
+   /* console.log(contenu)*/
+    console.log(`La variable contenu est de type `,typeof (contenu))
+
+   /* const dataSaved = JSON.parse(localStorage.getItem("panier"))*/
+ 
+    console.log(`La variable dataSaved est de type`, typeof(dataSaved))
+    /*console.log(dataSaved)*/
+
+  
+
+   //initialisation
+    if((localStorage.getItem("panier"))=== null) {
+        let cart = [];
+        cart.push(contenu)
+        localStorage.setItem("panier", contenu);
+    }else {
+        let cart = JSON.parse(localStorage.getItem("panier"))
+        localStorage.setItem("panier", contenu);
+    }
+    }
+
+
+   
+
+
+    /*
+
+    if (contenu === null) {
         let tableauVide = [];
-        tableauVide.push(produit)
-        localStorage.setItem('panier', tableauVide)
+       tableauVide.push(produit)
+        localStorage.setItem("panier",(tableauVide))
     } else { 
-        contenu.push(produit)
-        localStorage.setItem('panier', JSON.stringify((contenu)))
+       tableauObj.push(produit)
+        localStorage.getItem("panier")
+        
     }*/
-})
+
+
+
+
+
+/*
+
+    if (contenu === null) {
+        let tableauVide = [];
+       tableauVide.push(produit)
+        JSON.parse.localStorage.setItem("panier",(tableauVide))
+    } else { 
+        (contenu.push(produit))
+        JSON.parse.localStorage.setItem("panier", (contenu))
+    }
+
+
 
 
 
@@ -116,4 +194,5 @@ let a = document.getElementsByClassName('.minus-btn').setAttribute('disabled', '
     })
    
 */
-}
+
+)}
