@@ -223,6 +223,8 @@ aside > img {
 
 /* CART PAGE */
 
+
+
 .cart-empty {
     text-align: center;
 }
@@ -233,5 +235,11 @@ aside > img {
 
 #total-price {
     background-color: chartreuse;
+}
+
+.total-price-child {
+   
+    padding: 50px;
+    background-color: rgb(243, 236, 236);
 }
 

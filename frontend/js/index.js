@@ -36,10 +36,9 @@ function affichagePeluches(data) {
         peluches.appendChild(div);
 
        
-        let originalPrice = data[i].price;
+    
         /*console.log(new Intl.NumberFormat('fr-FR',{style:'currency', currency:'EUR'}).format(price));*/
-        let price = (originalPrice / 100).toFixed(2);
-        console.log(price);
+       
         
 
         let link = "product.html?id=" + data[i]._id;
@@ -57,7 +56,7 @@ function affichagePeluches(data) {
         content += 
         `
             <p> Nom :   ${data[i].name}  </p>
-            <p> Prix : ${price} €  </p>
+            <p> Prix : ${data[i].price} €  </p>
             <p> Description :  ${data[i].description} </p>
         `;
 

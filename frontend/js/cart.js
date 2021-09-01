@@ -54,13 +54,13 @@
 
             total = 0;
             dataSaved.forEach(item => {
-              total += total + item.price
+              total += item.price
             })
 
             content = '';
 
             content += 
-            `<p>Prix : ${total} </p>`;
+            `<p>Prix Total : ${total}€</p>`;
 
             divPrixTotal.innerHTML = content;
 

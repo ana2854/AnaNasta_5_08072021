@@ -24,9 +24,9 @@ async function AfficherUnProduit() {
 
    
     /*Le prix est divisé par 100*/
-    let originalPrice = produit.price;
+  
     /*console.log(new Intl.NumberFormat('fr-FR',{style:'currency', currency:'EUR'}).format(price));*/
-    let price = (originalPrice / 100).toFixed(2);
+    
  
 
 
@@ -55,7 +55,7 @@ async function AfficherUnProduit() {
     </select>
     
     <div class="prix-total">
-            <p class="prix-produit"> Prix : ${price} €  </p>
+            <p class="prix-produit"> Prix : ${produit.price} €  </p>
     </div>
     <div class="quantity">
             <div class="btn-quantite">
