@@ -35,8 +35,16 @@
               let content = '';
 
               content +=  
-              `<p> Nom : ${(dataSaved[i].name)}
-                </p>`;
+
+              `
+              <img id="${dataSaved[i]._id}" src="${dataSaved[i].imageUrl}"/>
+              <p> Nom : ${(dataSaved[i].name)}
+              </p>
+
+              <p> Prix : ${dataSaved[i].price} €  </p>
+              <p> Description :  ${dataSaved[i].description} </p>
+                
+                `;
 
             div.innerHTML = content;
 
