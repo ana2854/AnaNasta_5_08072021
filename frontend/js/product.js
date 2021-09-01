@@ -74,7 +74,10 @@ async function AfficherUnProduit() {
     <div class="btn-ajout-panier">
             <button class="ajout-produit" type="button">Ajouter au panier</button>
 
-    </div>`;
+    </div>
+    
+
+    `;
 
 divOursInfo.innerHTML = content;
 
@@ -102,36 +105,40 @@ console.log(typeof(parsedString))
 document.getElementsByClassName('ajout-produit')[0].addEventListener('click', function (add){
     add.preventDefault() 
 
-     //Avant de mettre des données dans le local storage je vérifie d'abord s'il y a des données avec la methode get item
-
      //convertion d'un objet en string pour les sauvegarder dans mon local storage
-
-
-   const contenu = JSON.stringify(produit);
+   
      /*localStorage.setItem("panier", contenu);*/
    /* console.log(contenu)*/
-    console.log(`La variable contenu est de type `,typeof (contenu))
+    /*console.log(`La variable contenu est de type `,typeof (contenu))
 
    /* const dataSaved = JSON.parse(localStorage.getItem("panier"))*/
  
-    console.log(`La variable dataSaved est de type`, typeof(dataSaved))
+    /*console.log(`La variable dataSaved est de type`, typeof(dataSaved))
     /*console.log(dataSaved)*/
 
+
+   let dataSaved = localStorage.getItem("panier");
   
 
    //initialisation
-    if((localStorage.getItem("panier"))=== null) {
+    if (dataSaved=== null) {
         let cart = [];
-        cart.push(contenu)
-        localStorage.setItem("panier", contenu);
+        cart.push(produit)
+        localStorage.setItem("panier", JSON.stringify(cart));
+
     }else {
-        let cart = JSON.parse(localStorage.getItem("panier"))
-        localStorage.setItem("panier", contenu);
+      
+        let cart = JSON.parse(dataSaved);
+        cart.push(produit);
+        localStorage.setItem("panier", JSON.stringify(cart));
     }
     }
 
 
-   
+)}
+
+
+
 
 
     /*
@@ -195,4 +202,3 @@ let a = document.getElementsByClassName('.minus-btn').setAttribute('disabled', '
    
 */
 
-)}

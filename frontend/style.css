@@ -183,14 +183,14 @@ aside > img {
     cursor: pointer;
 }
 
-.btn-ajout-panier {
+.btn-ajout-panier, .btn-clear {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     margin: 30px;
 }
 
-.ajout-produit {
+.ajout-produit, .supprime-produit {
     padding: 15px;
     cursor: pointer;
     font-weight: bold;
