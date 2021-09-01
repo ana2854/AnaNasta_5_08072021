@@ -240,9 +240,7 @@ aside > img {
     width: 20%;
 }
 
-#total-price {
-    background-color: chartreuse;
-}
+
 
 .total-price-child {
    
@@ -250,8 +248,33 @@ aside > img {
     background-color: rgb(243, 236, 236);
 }
 
+.total-price-child > p {
+    background-color: rgb(180, 179, 179);
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
 #btn-commander {
     padding: 15px 30px 15px 30px;
     cursor: pointer;
 }
+
+#formulaire {
+
+    border-radius: 5px;
+    border: 1px solid grey;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    background-color: #e8ffdd;
+
+}
+
+#formulaire div {
+    margin : 5px;
+}
+
 

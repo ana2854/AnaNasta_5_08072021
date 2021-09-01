@@ -61,42 +61,49 @@
 
             content += 
             `<p>Prix Total : ${total}€</p>
-            
+
+            <div id="formulaire">   
             <form action="/" method="GET">
-            
-              <label for="firstName">
-              First Name
-              <input id="firstName" name="firstName" type="text" required></label>
+            <p>Remplissez le formulaire</p>
 
-              <label for="lastName">
-              Last Name
-              <input id="lastName" name="lastName" type="text">
+              <div>
+                <label for="firstName">
+                Prénom
+                <input id="firstName" name="firstName" type="text" required>
+                </label>
+              </div>
+
+              <div>   
+                <label for="lastName">
+                Nom de famille
+                <input id="lastName" name="lastName" type="text">
+                </label>
+              </div>
+
+              <div>
+                <label for="Adress">
+                Adresse
+                <input id="adress" name="adress" type="text">
+                </label>
+              </div>
+
+              <div>
+                <label for="City">
+                Ville
+                <input id="city" name="city" type="text">
+                </label>
+              </div>
+
+              <div>         
+              <label for="email_adress">
+              Email
+              <input type="email" name="email" id="email-adress" autocomplete="email" value type="email" >
               </label>
 
-              <label for="Adress">
-              Adresse
-              <input id="adress" name="adress" type="text">
-              </label>
-              
-
-              <label for="City">
-              Ville
-              <input id="city" name="city" type="text">
-              </label>
-            
-
-              <label for="email_adress">Email
-              <input type="email" name="email" id="email-adress" autocomplete="email" value title="e-mail" class="input-text">
-
-            
-            </label>
-            
-            
-            
-            
+              </div>
             
             </form>
-
+            </div>
 
 
             <button id="btn-commander">Commander</button>
