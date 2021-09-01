@@ -62,7 +62,43 @@
             content += 
             `<p>Prix Total : ${total}€</p>
             
+            <form action="/" method="GET">
             
+              <label for="firstName">
+              First Name
+              <input id="firstName" name="firstName" type="text" required></label>
+
+              <label for="lastName">
+              Last Name
+              <input id="lastName" name="lastName" type="text">
+              </label>
+
+              <label for="Adress">
+              Adresse
+              <input id="adress" name="adress" type="text">
+              </label>
+              
+
+              <label for="City">
+              Ville
+              <input id="city" name="city" type="text">
+              </label>
+            
+
+              <label for="email_adress">Email
+              <input type="email" name="email" id="email-adress" autocomplete="email" value title="e-mail" class="input-text">
+
+            
+            </label>
+            
+            
+            
+            
+            
+            </form>
+
+
+
             <button id="btn-commander">Commander</button>
             
             `;

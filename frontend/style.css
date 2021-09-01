@@ -231,6 +231,13 @@ aside > img {
 
 .ours.panier {
     cursor: pointer;
+    width: 60%;
+}
+
+.ours.panier img {
+    border-radius: 10px;
+    height: 50px;
+    width: 20%;
 }
 
 #total-price {
