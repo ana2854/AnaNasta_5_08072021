@@ -60,7 +60,12 @@
             content = '';
 
             content += 
-            `<p>Prix Total : ${total}€</p>`;
+            `<p>Prix Total : ${total}€</p>
+            
+            
+            <button id="btn-commander">Commander</button>
+            
+            `;
 
             divPrixTotal.innerHTML = content;
 
