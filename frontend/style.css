@@ -227,3 +227,11 @@ aside > img {
     text-align: center;
 }
 
+.ours.panier {
+    cursor: pointer;
+}
+
+#total-price {
+    background-color: chartreuse;
+}
+

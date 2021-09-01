@@ -141,35 +141,6 @@ document.getElementsByClassName('ajout-produit')[0].addEventListener('click', fu
 
 
 
-    /*
-
-    if (contenu === null) {
-        let tableauVide = [];
-       tableauVide.push(produit)
-        localStorage.setItem("panier",(tableauVide))
-    } else { 
-       tableauObj.push(produit)
-        localStorage.getItem("panier")
-        
-    }*/
-
-
-
-
-
-/*
-
-    if (contenu === null) {
-        let tableauVide = [];
-       tableauVide.push(produit)
-        JSON.parse.localStorage.setItem("panier",(tableauVide))
-    } else { 
-        (contenu.push(produit))
-        JSON.parse.localStorage.setItem("panier", (contenu))
-    }
-
-
-
 
 
    /*

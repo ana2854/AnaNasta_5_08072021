@@ -1,22 +1,14 @@
 
- 
-
-      /*let dataSaved = localStorage.getItem("panier");
-
-      const cartProducts = document.getElementById("cart-products");
-        const chosenProduct = document.createElement('div').className('chosen-product');
-        let div = cartProducts.appendChild("chosen-product");
-
-      div.innerHTML = dataSaved;*/
 
      // si le local storage n'est pas vide
        if (typeof(Storage) !== "undefined") {
        // récupère les datas 
        affichageProduitsChoisis()
+       affichagePrixTotal()
        console.log ('ok')
         
         } else {
-        document.getElementById("result").innerHTML = "Browser does not support Web Storage.";
+        document.getElementById("cart-empty").innerHTML = "Votre panier est vide";
         console.log('nope')
         }
       
@@ -49,6 +41,31 @@
             div.innerHTML = content;
 
           }
-       
-        
         }
+
+        function affichagePrixTotal () {
+            let prixTotal = document.getElementById("total-price")
+            let divPrixTotal = document.createElement("div");
+            divPrixTotal.className = "total-price-child";
+
+            let dataSaved = JSON.parse(localStorage.getItem("panier"))
+
+            prixTotal.appendChild(divPrixTotal);
+
+            total = 0;
+            dataSaved.forEach(item => {
+              total += total + item.price
+            })
+
+            content = '';
+
+            content += 
+            `<p>Prix : ${total} </p>`;
+
+            divPrixTotal.innerHTML = content;
+
+
+        }
+
+
+      
