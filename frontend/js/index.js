@@ -66,12 +66,12 @@ getBears();
 
 
 function affichagePeluches(data) {
-    let ours = document.getElementById("peluches");
+    let peluches = document.getElementById("peluches");
 
     for (let i = 0 ; i < data.length; i++) {
         let div = document.createElement('div');
         div.className = "ours accueil";
-        ours.appendChild(div);
+        peluches.appendChild(div);
 
        
         let originalPrice = data[i].price;
