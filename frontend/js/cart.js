@@ -77,7 +77,7 @@
           const lastName = document.getElementById("lastName");
           const adress = document.getElementById("adress");
           const city = document.getElementById("city");
-          const email = document.getElementById("email");
+          let email = document.getElementById("email");
           
           
           let form = document.getElementById("form");
@@ -124,7 +124,7 @@
             <div class="form_item">       
             <label for="email">
             Email
-            <input type="email" name="email" id="email" autocomplete="email" type="email" placeholder="e-mail" >
+            <input id="email" type="email" name="email" type="email" placeholder="e-mail" >
             </label>
             <small></small>
 
@@ -140,7 +140,7 @@
 
           form.innerHTML = content;
         
-
+        
          let formbox = document.getElementById("formbox")
 
          //on écoute la case input est modifié et on lui indique quoi faire
@@ -151,15 +151,20 @@
 
         const validEmail = function (inputEmail) {
           //creation de la regex exp pour validation email
-          let emailRegExp = new RegExp ('
-          ^[a-zA-Z0-9.-_]+[@]{1}[a-zA-z0-9-_]+[.]{1}[a-z]{2,10}$
-          ', 'g'
-          );
-
-        let testEmail = emailRegEx.test(inputEmail.value)
+          let emailRegExp = new RegExp ('^[a-zA-Z0-9.-_]+[@]{1}[a-zA-z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g');
+        }
+        let small = inputEmail.nexElementSibling;
       
-          );
+          
 
       let testEmail = email.RegExp.test(inputEmail.value);
-
+          if(testEmail.test(inputEmail.value)) {
+              small.innerHTML = "Adresse mail valide";
+              small.classList.remove("error");
+              small.classList.add("ok")
+          } else {
+            small.innerHTML = "Adresse mail non valide";
+            small.classList.remove("ok");
+            small.classList.add("error");
+          }
         }
