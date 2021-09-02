@@ -5,6 +5,7 @@
        // récupère les datas 
        affichageProduitsChoisis()
        affichagePrixTotal()
+       formulaire()
        console.log ('ok')
         
         } else {
@@ -61,52 +62,6 @@
 
             content += 
             `<p>Prix Total : ${total}€</p>
-
-            <div id="formulaire">   
-            <form action="/" method="GET">
-            <p>Remplissez le formulaire</p>
-
-              <div>
-                <label for="firstName">
-                Prénom
-                <input id="firstName" name="firstName" type="text" required>
-                </label>
-              </div>
-
-              <div>   
-                <label for="lastName">
-                Nom de famille
-                <input id="lastName" name="lastName" type="text">
-                </label>
-              </div>
-
-              <div>
-                <label for="Adress">
-                Adresse
-                <input id="adress" name="adress" type="text">
-                </label>
-              </div>
-
-              <div>
-                <label for="City">
-                Ville
-                <input id="city" name="city" type="text">
-                </label>
-              </div>
-
-              <div>         
-              <label for="email_adress">
-              Email
-              <input type="email" name="email" id="email-adress" autocomplete="email" value type="email" >
-              </label>
-
-              </div>
-            
-            </form>
-            </div>
-
-
-            <button id="btn-commander">Commander</button>
             
             `;
 
@@ -116,4 +71,95 @@
         }
 
 
+        function formulaire () {
+
+          const firstName = document.getElementById("firstName");
+          const lastName = document.getElementById("lastName");
+          const adress = document.getElementById("adress");
+          const city = document.getElementById("city");
+          const email = document.getElementById("email");
+          
+          
+          let form = document.getElementById("form");
+
+          content = '';
+
+          content += 
+          ` 
+          <form action="" method="POST" id="formbox">
+          <p>Remplissez le formulaire</p>
+
+            <div class="form_item">
+              <label for="firstName">
+              Prénom
+              <input id="firstName" name="firstName" type="text" placeholder="Prénom" required>
+              </label>
+              <small> </small>
+            </div>
+
+            <div class="form_item">
+              <label for="lastName">
+              Nom de famille
+              <input id="lastName" name="lastName" type="text" placeholder="Nom de Famille">
+              </label>
+              <small ></small>
+            </div>
+
+            <div class="form_item">
+              <label for="adress">
+              Adresse
+              <input id="adress" name="adress" type="text" placeholder="Adresse">
+              </label>
+              <small></small>
+            </div>
+
+            <div class="form_item">
+              <label for="city">
+              Ville
+              <input id="city" name="city" type="text" placeholder="Ville">
+              </label>
+              <small></small>
+            </div>
+
+            <div class="form_item">       
+            <label for="email">
+            Email
+            <input type="email" name="email" id="email" autocomplete="email" type="email" placeholder="e-mail" >
+            </label>
+            <small></small>
+
+            </div>
+          
+           </form>
+    
+          <div class="commander">
+          <button id="btn-commander">Commander</button>
+          </div>
+         
+          `;
+
+          form.innerHTML = content;
+        
+
+         let formbox = document.getElementById("formbox")
+
+         //on écoute la case input est modifié et on lui indique quoi faire
+         formbox.email.addEventListener("change", function () {
+           validEmail(this)
+         });
+        
+
+        const validEmail = function (inputEmail) {
+          //creation de la regex exp pour validation email
+          let emailRegExp = new RegExp ('
+          ^[a-zA-Z0-9.-_]+[@]{1}[a-zA-z0-9-_]+[.]{1}[a-z]{2,10}$
+          ', 'g'
+          );
+
+        let testEmail = emailRegEx.test(inputEmail.value)
       
+          );
+
+      let testEmail = email.RegExp.test(inputEmail.value);
+
+        }
