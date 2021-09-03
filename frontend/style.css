@@ -279,12 +279,14 @@ aside > img {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
 
 }
 
 .form_item {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
   
 
 }

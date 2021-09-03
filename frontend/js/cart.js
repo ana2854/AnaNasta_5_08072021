@@ -73,34 +73,27 @@
 
         function formulaire () {
 
-          const firstName = document.getElementById("firstName");
-          const lastName = document.getElementById("lastName");
-          const adress = document.getElementById("adress");
-          const city = document.getElementById("city");
-          let email = document.getElementById("email");
-          
-          
           let form = document.getElementById("form");
 
           content = '';
 
           content += 
           ` 
-          <form action="" method="POST" id="formbox">
+          <form id="formbox" name="formbox" action="/" method="GET" >
           <p>Remplissez le formulaire</p>
 
             <div class="form_item">
-              <label for="firstName">
+              <label for="firstname">
               Prénom
-              <input id="firstName" name="firstName" type="text" placeholder="Prénom" required>
+              <input id="firstname" name="firstname" type="text" placeholder="Prénom" required>
               </label>
               <small> </small>
             </div>
 
             <div class="form_item">
-              <label for="lastName">
+              <label for="lastname">
               Nom de famille
-              <input id="lastName" name="lastName" type="text" placeholder="Nom de Famille">
+              <input id="lastname" name="lastname" type="text" placeholder="Nom de Famille">
               </label>
               <small ></small>
             </div>
@@ -125,46 +118,127 @@
             <label for="email">
             Email
             <input id="email" type="email" name="email" type="email" placeholder="e-mail" >
-            </label>
             <small></small>
-
+            </label>
             </div>
-          
-           </form>
-    
-          <div class="commander">
-          <button id="btn-commander">Commander</button>
+
+            
+            <div class="commander">
+              <button id="btn-commander" type="submit">Commander</button>
           </div>
-         
+
+           </form>
+
+           <p class="error"</p>
           `;
 
           form.innerHTML = content;
-        
-        
-         let formbox = document.getElementById("formbox")
 
-         //on écoute la case input est modifié et on lui indique quoi faire
-         formbox.email.addEventListener("change", function () {
-           validEmail(this)
-         });
         
+         document.forms["formbox"].addEventListener("submit", function(e) {
+           let erreur;
 
-        const validEmail = function (inputEmail) {
-          //creation de la regex exp pour validation email
-          let emailRegExp = new RegExp ('^[a-zA-Z0-9.-_]+[@]{1}[a-zA-z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g');
-        }
-        let small = inputEmail.nexElementSibling;
+           let inputs = this;
+
+           for (var i = 0; i < inputs.length; i++) {
+             console.log(inputs[i]);
+             if (!inputs[i].value) {
+               erreur = "veuillez renseignez tous les champs"
+             }
+           }
+
+           if (erreur) {
+             e.preventDefault();
+             document.getElementsByClassName("error").innerHTML=erreur;
+             return false
+           } else {
+             alert('formulaire envoyé');
+           }
+         })
+       
       
+
+          /*selection des input du formulaire
+         const firstname = document.getElementById("firstname");
+         const lastname = document.getElementById("lastname");
+         const adress = document.getElementById("adress");
+         const city = document.getElementById("city");
+         
+         let small = document.getElementsByTagName("small")
+
+       
+          let email = document.getElementById("email").value;
+
+
           
 
-      let testEmail = email.RegExp.test(inputEmail.value);
-          if(testEmail.test(inputEmail.value)) {
+
+          /*
+
+          email.addEventListener("change", function() {
+
+          let regx = /^[a-zA-Z0-9.-_]+[@]{1}[a-zA-z0-9.-_]+[.]{1}[a-z]{2,10}$'/
+
+          if(regx.text(email)) {
+            small.innerHTML = "Adresse mail valide";
+            small.classList.remove("error");
+            small.classList.add("ok")
+      } else {
+          small.innerHTML = "Adresse mail non valide";
+          small.classList.remove("ok");
+          small.classList.add("error");
+        }
+          })
+        }
+      
+         /*
+         console.log(email)
+          console.log(lastname)
+
+         formbox.addEventListener("submit", function(e){
+           e.preventDefault();
+           let messages = []
+           if (adress.value === null ) {
+             messages.push('name is required')}
+           }
+         )}
+
+*/
+
+
+
+/*
+         //on écoute la case input est modifié et on lui indique quoi faire
+         formbox.email.addEventListener("onInput", function () {
+           validEmail(this);
+         });
+
+         console.log(formbox.email)
+        
+
+        const validEmail = function(inputEmail) {
+          //creation de la regex exp pour validation email
+          let emailRegExp = new RegExp ('^[a-zA-Z0-9.-_]+[@]{1}[a-zA-z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g');
+        };
+
+        //récupération de la balise small
+        let small = inputEmail.nextElementSibling;
+        
+        console.log(small)
+
+      
+      //test de l'expression régulière
+          if(emailRegExp.test(inputEmail.value)) {
               small.innerHTML = "Adresse mail valide";
               small.classList.remove("error");
               small.classList.add("ok")
-          } else {
+        } else {
             small.innerHTML = "Adresse mail non valide";
             small.classList.remove("ok");
             small.classList.add("error");
           }
+        }
+          
+        */
+
         }
