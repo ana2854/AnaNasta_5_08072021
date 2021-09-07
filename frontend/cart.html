@@ -44,7 +44,67 @@
 
     <div id="total-price"></div>
 
-    <div id="form"></div>
+    <div id="form">
+        
+        <form id="formbox" name="formbox" action="#" method="POST" >
+
+        <p>Remplissez le formulaire pour valider la commande</p>
+
+          <div class="form_item">
+            <label for="firstname">
+            <p>Prénom</p>
+            <input id="firstname" name="firstname" type="text" placeholder="Votre prénom" required>
+            <small id="errorFirstName" ></small>
+            </label>
+           
+          </div>
+
+          <div class="form_item">
+            <label for="lastname">
+            <p>Nom de famille</p>
+            <input id="lastname" name="lastname" type="text" placeholder="Votre nom de famille">
+            </label>
+            <small id="errorLastName"></small>
+          </div>
+
+          <div class="form_item">
+            <label for="adress">
+            <p>Adresse</p>
+            <input id="adress" name="adress" type="text" placeholder="Votre votre adresse" required>
+            </label>
+            <small id="errorAdress"></small>
+          </div>
+
+          <div class="form_item">
+            <label for="city">
+            <p>Ville</p>
+            <input id="city" name="city" type="text" placeholder="Votre ville" required>
+            </label>
+            <small id="errorCity"></small>
+          </div>
+
+          <div class="form_item">       
+          <label for="email">
+          <p>Email</p>
+          <input id="email" type="text" name="email" placeholder="Votre e-mail" >
+          <small id="errorEmail"></small>
+          </label>
+          </div>
+
+        
+          
+          <div class="commander">
+            <button id="btn-commander" type="submit">Commander</button>
+        </div>
+
+         </form>
+   
+       
+    
+
+
+
+    </div>
 
 
         
