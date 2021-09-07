@@ -85,6 +85,9 @@
 
          let smallMail = document.getElementById("errorEmail")
          let smallLastName = document.getElementById("errorLastName")
+         let smallFirstName = document.getElementById("errorFirstName")
+         let smallCity = document.getElementById("errorCity")
+         let smallAdress = document.getElementById("errorAdress")
          
          let msgError = document.getElementsByClassName("error")
          let btnCommander = document.getElementById("btn-commander")
@@ -125,4 +128,48 @@
         smallLastName.classList.remove("ok");
         smallLastName.classList.add("error");
       }
-        })}
+
+       // REGEX PRENOM
+       if(regexPrenomNomVille.test(firstname)) {
+         smallFirstName.innerHTML = "Prénom valide";
+         smallFirstName.classList.remove("error");
+         smallFirstName.classList.add("ok")
+       }else {
+       smallFirstName.innerHTML = "Le prénom n'est pas valide";
+       smallFirstName.classList.remove("ok");
+       smallFirstName.classList.add("error");
+     }
+
+     //REGEX VILLE 
+
+     if(regexPrenomNomVille.test(city)) {
+      smallCity.innerHTML = "Ville valide";
+      smallCity.classList.remove("error");
+      smallCity.classList.add("ok")
+    }else {
+    smallCity.innerHTML = "Ville non valide";
+    smallCity.classList.remove("ok");
+    smallCity.classList.add("error");
+  }
+
+  //REGEX ADRESSE 
+
+  let regexAdresse = /^[A-Za-z09]{5.50}$/;
+
+  if(regexAdresse.test(adress)) {
+    smallAdress.innerHTML = "Adresse valide";
+    smallAdress.classList.remove("error");
+    smallAdress.classList.add("ok")
+  }else {
+  smallAdress.innerHTML = "Adresse non valide";
+  smallAdress.classList.remove("ok");
+  smallAdress.classList.add("error");
+}
+
+
+
+
+        }
+
+        
+        )}
