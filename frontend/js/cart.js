@@ -76,10 +76,10 @@
 
        
         //selection des input du formulaire
-         const firstname = document.getElementById("firstname");
-         const lastname = document.getElementById("lastname").value;
-         const adress = document.getElementById("adress");
-         const city = document.getElementById("city");
+       
+       
+        
+         
          let formbox = document.getElementById('formbox')
 
 
@@ -98,12 +98,13 @@
 
         // ADD EVENT LISTENER sur bouton commander
         btnCommander.addEventListener('click', function(e) {
-          
+        
+        
+          //REGEX EMAIL  
         let email = document.getElementById("email").value;
         e.preventDefault();
         console.log(email)
         
-        //REGEX EMAIL 
         let regxMail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
         if(regxMail.test(email)) {
@@ -117,7 +118,10 @@
         }
         
         // REGEX NOM DE FAMILLE 
-        let regexPrenomNomVille = /^[a-zA-Z]+ [a-zA-Z]+$/
+
+        const lastname = document.getElementById("lastname").value;
+        e.preventDefault();
+        let regexPrenomNomVille =  /^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/
 
         if(regexPrenomNomVille.test(lastname)) {
           smallLastName.innerHTML = "Nom valide";
@@ -130,41 +134,48 @@
       }
 
        // REGEX PRENOM
+
+       const firstname = document.getElementById("firstname").value;
+
        if(regexPrenomNomVille.test(firstname)) {
          smallFirstName.innerHTML = "Prénom valide";
          smallFirstName.classList.remove("error");
          smallFirstName.classList.add("ok")
        }else {
-       smallFirstName.innerHTML = "Le prénom n'est pas valide";
-       smallFirstName.classList.remove("ok");
-       smallFirstName.classList.add("error");
+        smallFirstName.innerHTML = "Le prénom n'est pas valide";
+        smallFirstName.classList.remove("ok");
+        smallFirstName.classList.add("error");
      }
 
      //REGEX VILLE 
 
-     if(regexPrenomNomVille.test(city)) {
-      smallCity.innerHTML = "Ville valide";
-      smallCity.classList.remove("error");
-      smallCity.classList.add("ok")
-    }else {
-    smallCity.innerHTML = "Ville non valide";
-    smallCity.classList.remove("ok");
-    smallCity.classList.add("error");
+     const city = document.getElementById("city").value;
+
+        if(regexPrenomNomVille.test(city)) {
+        smallCity.innerHTML = "Ville valide";
+        smallCity.classList.remove("error");
+        smallCity.classList.add("ok")
+        }else {
+        smallCity.innerHTML = "Ville non valide";
+        smallCity.classList.remove("ok");
+        smallCity.classList.add("error");
   }
 
-  //REGEX ADRESSE 
+      //REGEX ADRESSE
 
-  let regexAdresse = /^[A-Za-z09]{5.50}$/;
+      const adress = document.getElementById("adress").value;
 
-  if(regexAdresse.test(adress)) {
-    smallAdress.innerHTML = "Adresse valide";
-    smallAdress.classList.remove("error");
-    smallAdress.classList.add("ok")
-  }else {
-  smallAdress.innerHTML = "Adresse non valide";
-  smallAdress.classList.remove("ok");
-  smallAdress.classList.add("error");
-}
+      let regexAdresse = /^\d+\s[a-zA-Z]+\s[a-zA-Z]+(\s[a-zA-Z-]*)?$/
+
+      if(regexAdresse.test(adress)) {
+        smallAdress.innerHTML = "Adresse valide";
+        smallAdress.classList.remove("error");
+        smallAdress.classList.add("ok")
+      }else {
+        smallAdress.innerHTML = "Adresse non valide";
+        smallAdress.classList.remove("ok");
+        smallAdress.classList.add("error");
+    }
 
 
 
