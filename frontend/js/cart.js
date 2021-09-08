@@ -5,8 +5,8 @@
        // récupère les datas 
        affichageProduitsChoisis()
        affichagePrixTotal()
-       formulaire()
-       console.log ('ok')
+       validationFormulaire()
+       
         
         } else {
         document.getElementById("cart-empty").innerHTML = "Votre panier est vide";
@@ -14,13 +14,14 @@
         }
       
         function affichageProduitsChoisis() {
-   
-      let dataSaved = JSON.parse(localStorage.getItem("panier"))
-      let cartProducts = document.getElementById("cart-products")
-    
+           let dataSaved = JSON.parse(localStorage.getItem("panier"))
 
-          for (let i = 0 ; i < dataSaved.length; i++) {
+       
+        
              
+          for (let i = 0 ; i < dataSaved.length; i++) {
+               let cartProducts = document.getElementById("cart-products")
+               console.log(cartProducts)
               let div = document.createElement('div');
               div.className = "ours panier";
               cartProducts.appendChild(div);
@@ -72,30 +73,20 @@
         }
 
 
-        function formulaire () {
-
-       
+        function validationFormulaire () {
         //selection des input du formulaire
-       
-       
-        
-         
-         let formbox = document.getElementById('formbox')
-
-
          let smallMail = document.getElementById("errorEmail")
          let smallLastName = document.getElementById("errorLastName")
          let smallFirstName = document.getElementById("errorFirstName")
          let smallCity = document.getElementById("errorCity")
-         let smallAdress = document.getElementById("errorAdress")
+         let smallAddress = document.getElementById("errorAddress")
          
          let msgError = document.getElementsByClassName("error")
          let btnCommander = document.getElementById("btn-commander")
         
-         let input = document.getElementsByTagName("input")
+         let input = document.getElementsByTagName("input").value
 
-       
-
+      
         // ADD EVENT LISTENER sur bouton commander
         btnCommander.addEventListener('click', function(e) {
         
@@ -163,18 +154,18 @@
 
       //REGEX ADRESSE
 
-      const adress = document.getElementById("adress").value;
+      const address = document.getElementById("adress").value;
 
       let regexAdresse = /^\d+\s[a-zA-Z]+\s[a-zA-Z]+(\s[a-zA-Z-]*)?$/
 
-      if(regexAdresse.test(adress)) {
-        smallAdress.innerHTML = "Adresse valide";
-        smallAdress.classList.remove("error");
-        smallAdress.classList.add("ok")
+      if(regexAdresse.test(address)) {
+        smallAddress.innerHTML = "Adresse valide";
+        smallAddress.classList.remove("error");
+        smallAddress.classList.add("ok")
       }else {
-        smallAdress.innerHTML = "Adresse non valide";
-        smallAdress.classList.remove("ok");
-        smallAdress.classList.add("error");
+        smallAddress.innerHTML = "Adresse non valide";
+        smallAddress.classList.remove("ok");
+        smallAddress.classList.add("error");
     }
 
 

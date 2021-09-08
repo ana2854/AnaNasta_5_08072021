@@ -1,6 +1,7 @@
 
 AfficherUnProduit()
 
+//J'utilise la fonction getArticle pour récupérer mes articles
 function getArticles() {
     let id = window.location.search.slice(4)
     console.log(id)
@@ -9,37 +10,30 @@ function getArticles() {
       .then(function (response) {
        return response.json()
       })
-    /*.then(function (idProduit) {
-        return idProduit
-      })*/
       .catch(function (error) {
         alert(error)
       })
 }
 
+
+//Affichage de l'ensemble de mes produits 
 async function AfficherUnProduit() {
+
     const produit = await getArticles()
   
     let divOursInfo = document.querySelector('#produit .ours.info')
 
-   
-    /*Le prix est divisé par 100*/
-  
-    /*console.log(new Intl.NumberFormat('fr-FR',{style:'currency', currency:'EUR'}).format(price));*/
-    
- 
+    let contentOurs = '';
 
+    contentOurs += 
 
-    let content = '';
-
-    content += 
-
+    //Récupération de mes données dans la page produit 
     "<img" +
             " id="+ produit._id +
             " src=" + produit.imageUrl + 
             ">";
     
-    content+= `
+    contentOurs+= `
     <p> Nom :   ${produit.name}  </p>
     
     <p> Description :  ${produit.description} </p>
@@ -71,6 +65,8 @@ async function AfficherUnProduit() {
             </div>
     </div> 
 
+    <p class="alert-ajout-produit></p>
+
     <div class="btn-ajout-panier">
             <button class="ajout-produit" type="button">Ajouter au panier</button>
 
@@ -79,7 +75,7 @@ async function AfficherUnProduit() {
 
     `;
 
-divOursInfo.innerHTML = content;
+divOursInfo.innerHTML = contentOurs;
 
 /*
 
@@ -101,7 +97,7 @@ console.log(parsedString)
 console.log(typeof(parsedString))
 }*/
 
-
+// ADD EVENT LISTENER sur le bouton ajout-produit pour ajouter des produits au panier
 document.getElementsByClassName('ajout-produit')[0].addEventListener('click', function (add){
     add.preventDefault() 
 
@@ -116,11 +112,11 @@ document.getElementsByClassName('ajout-produit')[0].addEventListener('click', fu
     /*console.log(`La variable dataSaved est de type`, typeof(dataSaved))
     /*console.log(dataSaved)*/
 
-
+    //Données sauvegardées dans mon local storage
    let dataSaved = localStorage.getItem("panier");
   
 
-   //initialisation
+   //initialisation de mon panier : clé intitulé panier ainsi que son contenu 
     if (dataSaved=== null) {
         let cart = [];
         cart.push(produit)
@@ -132,10 +128,33 @@ document.getElementsByClassName('ajout-produit')[0].addEventListener('click', fu
         cart.push(produit);
         localStorage.setItem("panier", JSON.stringify(cart));
     }
-    }
 
 
-)}
+
+
+      document.getElementsByClassName("ajout-produit")[0].addEventListener("click",(e) => {
+        e.preventDefault();
+        ajoutProduit()
+    });
+
+    function ajoutProduit() {
+        let p = document.getElementsByClassName("alert-ajout-panier")
+        p.innerHTML ="Vous avez ajouté un produit dans le panier"
+    } ;
+
+
+}) 
+}
+
+    
+
+
+
+/*
+    
+    */
+
+
 
 
 
