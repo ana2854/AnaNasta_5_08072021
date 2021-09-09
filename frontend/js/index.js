@@ -1,4 +1,5 @@
 
+    // PAGE D'ACCEUIL
     
     /* On définit la fonction asynchrone */
     const getBears = async function () {
@@ -26,20 +27,14 @@
 
    
 
-
+//PAGE D'ACCEUIL - Récupération des peluches via l'api et mise en forme
 function affichagePeluches(data) {
     let peluches = document.getElementById("peluches");
 
     for (let i = 0 ; i < data.length; i++) {
-        let div = document.createElement('div');
-        div.className = "ours accueil";
-        peluches.appendChild(div);
-
-       
-    
-        /*console.log(new Intl.NumberFormat('fr-FR',{style:'currency', currency:'EUR'}).format(price));*/
-       
-        
+        let divOursAccueil = document.createElement('div');
+        divOursAccueil.className = "ours accueil";
+        peluches.appendChild(divOursAccueil);
 
         let link = "product.html?id=" + data[i]._id;
 
@@ -62,7 +57,7 @@ function affichagePeluches(data) {
 
         content += "</a>";
 
-        div.innerHTML = content;
+        divOursAccueil.innerHTML = content;
     }
 }
 

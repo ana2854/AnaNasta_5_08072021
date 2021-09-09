@@ -65,7 +65,7 @@ async function AfficherUnProduit() {
             </div>
     </div> 
 
-    <p class="alert-ajout-produit></p>
+    <div class="container"></div>
 
     <div class="btn-ajout-panier">
             <button class="ajout-produit" type="button">Ajouter au panier</button>
@@ -130,17 +130,25 @@ document.getElementsByClassName('ajout-produit')[0].addEventListener('click', fu
     }
 
 
-
-
+    
       document.getElementsByClassName("ajout-produit")[0].addEventListener("click",(e) => {
         e.preventDefault();
-        ajoutProduit()
+        notifAjoutProduit()
     });
 
-    function ajoutProduit() {
-        let p = document.getElementsByClassName("alert-ajout-panier")
-        p.innerHTML ="Vous avez ajouté un produit dans le panier"
+    function notifAjoutProduit() {
+        let notif = document.createElement("p")[0];
+       let container = document.getElementsByClassName("container")
+        container.appendChild(notif);
+        notif.classList.add("notif-ajout-produit")
+        notif.innerHTML ="Vous avez ajouté un produit dans le panier";
+
+        setTimeout(() => {
+            notif.remove()
+        }, 3000);
     } ;
+
+    
 
 
 }) 

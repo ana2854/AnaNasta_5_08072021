@@ -1,27 +1,29 @@
 
 
-     // si le local storage n'est pas vide alors afficher les produits choisis dans le panier
-       if (typeof(Storage) !== "undefined") {
+     // Si le local storage n'est pas vide alors afficher les produits choisis dans le panier + afficher le prix total + valider le formulaire
+       if (typeof(Storage) !== "undefined" ) {
        // récupère les datas 
        affichageProduitsChoisis()
        affichagePrixTotal()
        validationFormulaire()
-       
-        
+
         } else {
-        document.getElementById("cart-empty").innerHTML = "Votre panier est vide";
-        console.log('nope')
+          aucunProduit();
+        }
+
+        function aucunProduit() {
+           let empty = document.getElementById("cart-empty")[0]
+           empty.innerHTML = "Votre panier est vide";
+            console.log(empty)
         }
       
         function affichageProduitsChoisis() {
-           let dataSaved = JSON.parse(localStorage.getItem("panier"))
+             let dataSaved = JSON.parse(localStorage.getItem("panier"));
 
-       
-        
-             
           for (let i = 0 ; i < dataSaved.length; i++) {
-               let cartProducts = document.getElementById("cart-products")
-               console.log(cartProducts)
+            
+           let cartProducts = document.getElementById("cart-products");
+           console.log(cartProducts)
               let div = document.createElement('div');
               div.className = "ours panier";
               cartProducts.appendChild(div);
@@ -72,7 +74,7 @@
 
         }
 
-
+        //Validation du formulaire
         function validationFormulaire () {
         //selection des input du formulaire
          let smallMail = document.getElementById("errorEmail")
@@ -87,14 +89,14 @@
          let input = document.getElementsByTagName("input").value
 
       
-        // ADD EVENT LISTENER sur bouton commander
+        // ADD EVENT LISTENER sur bouton commander du formulaire
         btnCommander.addEventListener('click', function(e) {
         
         
           //REGEX EMAIL  
         let email = document.getElementById("email").value;
         e.preventDefault();
-        console.log(email)
+    
         
         let regxMail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
@@ -154,9 +156,9 @@
 
       //REGEX ADRESSE
 
-      const address = document.getElementById("adress").value;
+      const address = document.getElementById("address").value;
 
-      let regexAdresse = /^\d+\s[a-zA-Z]+\s[a-zA-Z]+(\s[a-zA-Z-]*)?$/
+      let regexAdresse = /\d+[ ](?:[A-Za-z0-9.-]+[ ]?)+/
 
       if(regexAdresse.test(address)) {
         smallAddress.innerHTML = "Adresse valide";
@@ -168,10 +170,66 @@
         smallAddress.classList.add("error");
     }
 
+     //2ème ADD EVENT LISTENER SUR BOUTON COMMANDER -> RECUPERATION DES DONNNES DU FORMULAIRE
+
+     let url = 'http://localhost:3000/api/teddies';
+
+
+     let formbox = document.getElementById("formbox");
+     console.log(formbox)
+
+     formbox.addEventListener("submit", (e) => {
+       e.preventDefault()
+      
+
+     })
+
+     let formData = {
+       firstname: document.getElementById("firstname").value,
+       lastname: document.getElementById("lastname").value,
+       address: document.getElementById("address").value,
+       city: document.getElementById("city").value,
+       email: document.getElementById("email").value
+     }
+
+     let jsonString = JSON.stringify(formData)
+
+     console.log(jsonString)
+    })}
 
 
 
-        }
+     /*
 
-        
-        )}
+        let formbox = document.getElementById("formbox")
+
+        formbox.addEventListener("submit", handleForm);
+  });
+
+        async function handleForm (e) {
+          e.preventDefault(); //empêche la page de se recharger
+          let myForm = ev.target;
+          let formDataObjet = new FormData(myForm);
+
+          //charge tout le contenu
+          for (let key of formDataObjet.keys()) {
+            console.log(key,formDataObjet.get(key))
+          }
+
+          let json = await convert2json(formDataObjet)
+
+          let url = "http://localhost:3000/teddies";
+          let req = new Request(url, {
+            body: formDataObjet,
+            method: "POST",
+          });
+
+          fetch(req)
+          .then((res)) => res.json())
+          .then((data)) => {
+            console.log("response from the server")
+          })
+          .catch(console.warn)
+          
+      }
+*/
