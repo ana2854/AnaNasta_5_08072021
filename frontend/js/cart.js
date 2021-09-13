@@ -1,11 +1,13 @@
 
 
      // Si le local storage n'est pas vide alors afficher les produits choisis dans le panier + afficher le prix total + valider le formulaire
-       if (typeof(Storage) !== "undefined" ) {
+       if (typeof(Storage) !== "undefined" && typeof(Storage) !== null) {
        // récupère les datas 
        affichageProduitsChoisis()
        affichagePrixTotal()
        validationFormulaire()
+       NbArticle()
+       retrieveIdProduct()
 
         } else {
           aucunProduit();
@@ -16,6 +18,21 @@
            empty.innerHTML = "Votre panier est vide";
             console.log(empty)
         }
+
+        function retrieveIdProduct () {
+          let dataSaved = JSON.parse(localStorage.getItem("panier"));
+
+          for (let i = 0 ; i < dataSaved.length; i++) {
+              let products = [];
+              let productsId = JSON.stringify(dataSaved[i]._id)
+              products.push(productsId)
+              console.log(productsId)
+              
+          }
+        }
+
+       
+       
       
         function affichageProduitsChoisis() {
              let dataSaved = JSON.parse(localStorage.getItem("panier"));
@@ -28,9 +45,9 @@
               div.className = "ours panier";
               cartProducts.appendChild(div);
 
-              let content = '';
+              let chosenProducts = '';
 
-              content +=  
+              chosenProducts +=  
 
               `
               <img id="${dataSaved[i]._id}" src="${dataSaved[i].imageUrl}"/>
@@ -38,99 +55,88 @@
               </p>
 
               <p> Prix : ${dataSaved[i].price} €  </p>
-              <p> Description :  ${dataSaved[i].description} </p>
+            
                 
                 `;
 
-            div.innerHTML = content;
+            div.innerHTML = chosenProducts;
 
           }
         }
 
         // FONCTION POUR LE PRIX TOTAL
         function affichagePrixTotal () {
-            let prixTotal = document.getElementById("total-price")
-            let divPrixTotal = document.createElement("div");
-            divPrixTotal.className = "total-price-child";
+
 
             let dataSaved = JSON.parse(localStorage.getItem("panier"))
 
-            prixTotal.appendChild(divPrixTotal);
+            let idPrixTotal = document.getElementById("total-price")
+            let divPrixTotal = document.createElement("div");
+            divPrixTotal.className = "total-price-child";
+            idPrixTotal.appendChild(divPrixTotal);
 
-            total = 0;
+            let prixTotal = 0;
             dataSaved.forEach(item => {
-              total += item.price
+            prixTotal += item.price
             })
 
             content = '';
 
             content += 
-            `<p>Prix Total : ${total}€</p>
-            
-            `;
+            `<p>Prix Total : ${prixTotal}€</p>`;
 
             divPrixTotal.innerHTML = content;
+          
+          }
+          
+            
+            function NbArticle () {
 
+              let dataSaved = JSON.parse(localStorage.getItem("panier"))
 
-        }
+            let idNumber  = document.getElementById("number-of-products");
+            let divQuantity = document.createElement("div");
+            divQuantity.className="quantité-de-produit";
+            idNumber.appendChild(divQuantity);
 
-        //Validation du formulaire
+              let numberOfProduct = dataSaved.length;
+              for (let i = 0; i<dataSaved.length; i++){
+           
+            let quantity ='';
+            quantity += `<p>Nombre d'articles : ${numberOfProduct} </p>`
+
+           divQuantity.innerHTML = quantity;
+              }
+            }
+
+          
         function validationFormulaire () {
-        //selection des input du formulaire
+        //selection balise small du formulaire
          let smallMail = document.getElementById("errorEmail")
          let smallLastName = document.getElementById("errorLastName")
          let smallFirstName = document.getElementById("errorFirstName")
          let smallCity = document.getElementById("errorCity")
          let smallAddress = document.getElementById("errorAddress")
          
-         let msgError = document.getElementsByClassName("error")
+         //bouton commander
          let btnCommander = document.getElementById("btn-commander")
         
+         //input du formulaire
          let input = document.getElementsByTagName("input").value
 
       
         // ADD EVENT LISTENER sur bouton commander du formulaire
         btnCommander.addEventListener('click', function(e) {
         
-        
-          //REGEX EMAIL  
-        let email = document.getElementById("email").value;
-        e.preventDefault();
-    
-        
-        let regxMail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
-        if(regxMail.test(email)) {
-          smallMail.innerHTML = "Adresse mail valide";
-          smallMail.classList.remove("error");
-          smallMail.classList.add("ok")
-        } else {
-        smallMail.innerHTML = "Adresse mail non valide";
-        smallMail.classList.remove("ok");
-        smallMail.classList.add("error");
-        }
-        
-        // REGEX NOM DE FAMILLE 
+        // Formulaire REGEX PRENOM
 
-        const lastname = document.getElementById("lastname").value;
-        e.preventDefault();
-        let regexPrenomNomVille =  /^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/
+       const firstnameValue = document.getElementById("firstname").value;
+       e.preventDefault();
 
-        if(regexPrenomNomVille.test(lastname)) {
-          smallLastName.innerHTML = "Nom valide";
-          smallLastName.classList.remove("error");
-          smallLastName.classList.add("ok")
-        }else {
-        smallLastName.innerHTML = "Le nom n'est pas valide";
-        smallLastName.classList.remove("ok");
-        smallLastName.classList.add("error");
-      }
+       let regexPrenomNomVille =  /^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/
 
-       // REGEX PRENOM
-
-       const firstname = document.getElementById("firstname").value;
-
-       if(regexPrenomNomVille.test(firstname)) {
+       if(regexPrenomNomVille.test(firstnameValue)) {
          smallFirstName.innerHTML = "Prénom valide";
          smallFirstName.classList.remove("error");
          smallFirstName.classList.add("ok")
@@ -140,62 +146,159 @@
         smallFirstName.classList.add("error");
      }
 
-     //REGEX VILLE 
+       // Formualaire REGEX NOM DE FAMILLE 
 
-     const city = document.getElementById("city").value;
+       const lastnameValue = document.getElementById("lastname").value;
+       e.preventDefault();
+      
 
-        if(regexPrenomNomVille.test(city)) {
-        smallCity.innerHTML = "Ville valide";
-        smallCity.classList.remove("error");
-        smallCity.classList.add("ok")
-        }else {
-        smallCity.innerHTML = "Ville non valide";
-        smallCity.classList.remove("ok");
-        smallCity.classList.add("error");
-  }
+       if(regexPrenomNomVille.test(lastnameValue)) {
+         smallLastName.innerHTML = "Nom valide";
+         smallLastName.classList.remove("error");
+         smallLastName.classList.add("ok")
+       }else {
+       smallLastName.innerHTML = "Le nom n'est pas valide";
+       smallLastName.classList.remove("ok");
+       smallLastName.classList.add("error");
+     }
 
-      //REGEX ADRESSE
+       // Formulaire REGEX ADRESSE
 
-      const address = document.getElementById("address").value;
+       const addressValue = document.getElementById("address").value;
+       e.preventDefault();
 
-      let regexAdresse = /\d+[ ](?:[A-Za-z0-9.-]+[ ]?)+/
+       let regexAdresse = /\d+[ ](?:[A-Za-z0-9.-]+[ ]?)+/
+ 
+       if(regexAdresse.test(addressValue)) {
+         smallAddress.innerHTML = "Adresse valide";
+         smallAddress.classList.remove("error");
+         smallAddress.classList.add("ok")
+       }else {
+         smallAddress.innerHTML = "Adresse non valide";
+         smallAddress.classList.remove("ok");
+         smallAddress.classList.add("error");
+     }
 
-      if(regexAdresse.test(address)) {
-        smallAddress.innerHTML = "Adresse valide";
-        smallAddress.classList.remove("error");
-        smallAddress.classList.add("ok")
+      //Formulaire REGEX VILLE 
+
+      const cityValue = document.getElementById("city").value;
+      e.preventDefault();
+
+      if(regexPrenomNomVille.test(cityValue)) {
+      smallCity.innerHTML = "Ville valide";
+      smallCity.classList.remove("error");
+      smallCity.classList.add("ok")
       }else {
-        smallAddress.innerHTML = "Adresse non valide";
-        smallAddress.classList.remove("ok");
-        smallAddress.classList.add("error");
-    }
-
-     //2ème ADD EVENT LISTENER SUR BOUTON COMMANDER -> RECUPERATION DES DONNNES DU FORMULAIRE
-
-     let url = 'http://localhost:3000/api/teddies';
+      smallCity.innerHTML = "Ville non valide";
+      smallCity.classList.remove("ok");
+      smallCity.classList.add("error");
+}
 
 
+     //Formulaire REGEX EMAIL  
+        const emailValue = document.getElementById("email").value;
+        e.preventDefault();
+    
+        
+        let regxMail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+        if(regxMail.test(emailValue)) {
+          smallMail.innerHTML = "Adresse mail valide";
+          smallMail.classList.remove("error");
+          smallMail.classList.add("ok")
+        } else {
+        smallMail.innerHTML = "Adresse mail non valide";
+        smallMail.classList.remove("ok");
+        smallMail.classList.add("error");
+        }
+
+        //FIN REGEX
+        
+    // Création de variables contenant la méthode test qui vérifie les regex
+    let regexTestFirstName = regexPrenomNomVille.test(firstnameValue)
+    let regexTestLastName = regexPrenomNomVille.test(lastnameValue)
+    let regexTestAddress = regexAdresse.test(addressValue)
+    let regexTestCity = regexPrenomNomVille.test(cityValue)
+    let regexTestMail = regxMail.test(emailValue)
+
+    //Condition : Si la valeur des inputs du formulaire sont égaux aux regex -variables ci-dessus - et s'ils ne sont pas vides ....
+    if (
+
+      (firstnameValue === regexTestFirstName && firstnameValue != "")
+      &&
+      (lastnameValue  === regexTestLastName && lastnameValue != "")
+      &&
+      (addressValue === regexTestAddress && addressValue !="")
+      &&
+      (cityValue === regexTestCity && cityValue != "")
+      &&
+      (emailValue === regexTestMail  && emailValue !="")
+
+    ) {
+
+      
+
+
+      //... alors envoyer les infomations de contact au serveur
+
+     //Selection de l'ensemble du formulaire dans la variable formbox
      let formbox = document.getElementById("formbox");
      console.log(formbox)
 
+      //2ème ADD EVENT LISTENER SUR BOUTON COMMANDER -> RECUPERATION DES DONNNES DU FORMULAIRE
      formbox.addEventListener("submit", (e) => {
        e.preventDefault()
-      
 
      })
 
-     let formData = {
-       firstname: document.getElementById("firstname").value,
-       lastname: document.getElementById("lastname").value,
-       address: document.getElementById("address").value,
-       city: document.getElementById("city").value,
-       email: document.getElementById("email").value
-     }
+    
 
-     let jsonString = JSON.stringify(formData)
+    //Objet contact
+     const contact = {
+      firstname: document.getElementById("firstname").value,
+      lastname: document.getElementById("lastname").value,
+      address: document.getElementById("address").value,
+      city: document.getElementById("city").value,
+      email: document.getElementById("email").value
+    };
 
-     console.log(jsonString)
-    })}
+  
+
+    let url = 'http://localhost:3000/api/teddies/order';
+
+  //Options de la requête
+   let options = {
+        //type de méthode , ici post
+        method: "POST",
+          //en-tête de la requête
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+        },
+        //création d'un objet json à envoyer
+        body : JSON.stringify({contact,productsId})
+
+   }
+
+   fetch(url, options)
+         //conversion en json
+        .then(response => response.json())
+        .then(json=>console.log(json))
+        .catch(error =>console.error(error))
+    }
+
+
+  
+  })}
+
+    
+    
+   
+    
+
+    
+
+    
 
 
 
@@ -232,4 +335,4 @@
           .catch(console.warn)
           
       }
-*/
+      */
