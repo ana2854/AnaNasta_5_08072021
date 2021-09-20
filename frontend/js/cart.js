@@ -13,32 +13,42 @@
           aucunProduit();
         }
 
+
+ let a = document.getElementById("btn-remove-product")
+
+
+          a.addEventListener("click", function(){
+            let div = document.getElementsByClassName("ours panier")
+              div.remove(this);
+            return '';
+          }) 
+    
         function aucunProduit() {
-           let empty = document.getElementById("cart-empty")[0]
+           let empty = document.getElementById("cart-empty")
            empty.innerHTML = "Votre panier est vide";
             console.log(empty)
         }
 
         function retrieveIdProduct () {
           let dataSaved = JSON.parse(localStorage.getItem("panier"));
+          let products = [];
 
           for (let i = 0 ; i < dataSaved.length; i++) {
-              let products = [];
-              let productsId = JSON.stringify(dataSaved[i]._id)
+              
+              let productsId = dataSaved[i]._id;
+              
               products.push(productsId)
               console.log(productsId)
-              
           }
+          return products;
         }
 
-       
-       
-      
+
         function affichageProduitsChoisis() {
-             let dataSaved = JSON.parse(localStorage.getItem("panier"));
+            let dataSaved = JSON.parse(localStorage.getItem("panier"));
 
           for (let i = 0 ; i < dataSaved.length; i++) {
-            
+             
            let cartProducts = document.getElementById("cart-products");
            console.log(cartProducts)
               let div = document.createElement('div');
@@ -55,6 +65,10 @@
               </p>
 
               <p> Prix : ${dataSaved[i].price} €  </p>
+
+              <div="btn-danger">
+              <button id="btn-remove-product">Supprimer</button>
+              </div>
             
                 
                 `;
@@ -63,7 +77,6 @@
 
           }
         }
-
         // FONCTION POUR LE PRIX TOTAL
         function affichagePrixTotal () {
 
@@ -92,7 +105,7 @@
             
             function NbArticle () {
 
-              let dataSaved = JSON.parse(localStorage.getItem("panier"))
+            let dataSaved = JSON.parse(localStorage.getItem("panier"))
 
             let idNumber  = document.getElementById("number-of-products");
             let divQuantity = document.createElement("div");
@@ -103,9 +116,9 @@
               for (let i = 0; i<dataSaved.length; i++){
            
             let quantity ='';
-            quantity += `<p>Nombre d'articles : ${numberOfProduct} </p>`
+            quantity += `<p>Vous avez ${numberOfProduct} d'articles dans votre panier </p>`
 
-           divQuantity.innerHTML = quantity;
+            divQuantity.innerHTML = quantity;
               }
             }
 
@@ -156,7 +169,7 @@
          smallLastName.innerHTML = "Nom valide";
          smallLastName.classList.remove("error");
          smallLastName.classList.add("ok")
-       }else {
+       } else {
        smallLastName.innerHTML = "Le nom n'est pas valide";
        smallLastName.classList.remove("ok");
        smallLastName.classList.add("error");
@@ -173,7 +186,7 @@
          smallAddress.innerHTML = "Adresse valide";
          smallAddress.classList.remove("error");
          smallAddress.classList.add("ok")
-       }else {
+       } else {
          smallAddress.innerHTML = "Adresse non valide";
          smallAddress.classList.remove("ok");
          smallAddress.classList.add("error");
@@ -188,7 +201,7 @@
       smallCity.innerHTML = "Ville valide";
       smallCity.classList.remove("error");
       smallCity.classList.add("ok")
-      }else {
+      } else {
       smallCity.innerHTML = "Ville non valide";
       smallCity.classList.remove("ok");
       smallCity.classList.add("error");
@@ -221,51 +234,52 @@
     let regexTestCity = regexPrenomNomVille.test(cityValue)
     let regexTestMail = regxMail.test(emailValue)
 
-    //Condition : Si la valeur des inputs du formulaire sont égaux aux regex -variables ci-dessus - et s'ils ne sont pas vides ....
+    //Condition : Si la valeur des inputs du formulaire est égale aux regex -variable ci-dessus - et s'ils ne sont pas vides ....
     if (
 
-      (firstnameValue === regexTestFirstName && firstnameValue != "")
+      (regexTestFirstName && firstnameValue != "")
       &&
-      (lastnameValue  === regexTestLastName && lastnameValue != "")
+      (regexTestLastName && lastnameValue != "")
       &&
-      (addressValue === regexTestAddress && addressValue !="")
+     (regexTestAddress && addressValue !="")
       &&
-      (cityValue === regexTestCity && cityValue != "")
+      (regexTestCity && cityValue != "")
       &&
-      (emailValue === regexTestMail  && emailValue !="")
+      (regexTestMail  && emailValue !="")
 
-    ) {
+    )  {
 
-      
-
-
-      //... alors envoyer les infomations de contact au serveur
+      //... alors envoyer les infomations de contact du formulaire + ID des produits au serveur
 
      //Selection de l'ensemble du formulaire dans la variable formbox
      let formbox = document.getElementById("formbox");
-     console.log(formbox)
 
-      //2ème ADD EVENT LISTENER SUR BOUTON COMMANDER -> RECUPERATION DES DONNNES DU FORMULAIRE
+      //Ajout d'un 2ème ADD EVENT LISTENER SUR le BOUTON COMMANDER -> RECUPERATION DES DONNNES DU FORMULAIRE
      formbox.addEventListener("submit", (e) => {
+
        e.preventDefault()
 
      })
 
-    
-
-    //Objet contact
+    //Objet Contact
      const contact = {
-      firstname: document.getElementById("firstname").value,
-      lastname: document.getElementById("lastname").value,
+      firstName: document.getElementById("firstname").value,
+      lastName: document.getElementById("lastname").value,
       address: document.getElementById("address").value,
       city: document.getElementById("city").value,
       email: document.getElementById("email").value
     };
 
-  
+    //Objet Info Commande
+    let infosCommande = {
+      contact : contact,
+      products : retrieveIdProduct()
+    }
+
 
     let url = 'http://localhost:3000/api/teddies/order';
 
+    
   //Options de la requête
    let options = {
         //type de méthode , ici post
@@ -276,63 +290,49 @@
           "Content-Type": "application/json",
         },
         //création d'un objet json à envoyer
-        body : JSON.stringify({contact,productsId})
+        body : JSON.stringify(infosCommande)
 
-   }
+      }
 
-   fetch(url, options)
+   fetch(url, options) 
          //conversion en json
         .then(response => response.json())
-        .then(json=>console.log(json))
-        .catch(error =>console.error(error))
-    }
+        .then(json=> {
 
+        let user = infosCommande.contact.lastName
 
-  
-  })}
-
-    
-    
-   
-    
-
-    
-
-    
-
-
-
-     /*
-
-        let formbox = document.getElementById("formbox")
-
-        formbox.addEventListener("submit", handleForm);
-  });
-
-        async function handleForm (e) {
-          e.preventDefault(); //empêche la page de se recharger
-          let myForm = ev.target;
-          let formDataObjet = new FormData(myForm);
-
-          //charge tout le contenu
-          for (let key of formDataObjet.keys()) {
-            console.log(key,formDataObjet.get(key))
-          }
-
-          let json = await convert2json(formDataObjet)
-
-          let url = "http://localhost:3000/teddies";
-          let req = new Request(url, {
-            body: formDataObjet,
-            method: "POST",
-          });
-
-          fetch(req)
-          .then((res)) => res.json())
-          .then((data)) => {
-            console.log("response from the server")
-          })
-          .catch(console.warn)
+        localStorage.setItem("NomUser", user)
+        console.log(user)
+        console.log(typeof user)
           
-      }
-      */
+        let orderId = json.orderId;
+        console.log (typeof orderId)
+
+        localStorage.setItem("IdCommande", orderId)
+
+
+        /*
+        
+        console.log(window.location.pathname)
+        
+        window.location.pathname=window.location.pathname.replace("cart.html", "confirmation.html");
+
+            */
+        
+
+        })
+
+
+        .catch(error =>console.error(error))
+    
+        
+  }
+
+else {
+    console.log("autre chose")
+  }
+}
+  )}
+
+
+    
