@@ -17,23 +17,22 @@ prixTotal += item.price;
 //Affichage message de confirmation
 let confirmMsg = document.getElementsByClassName("orderConfirmation")[0];
 
-console.log(confirmMsg)
+let contentConfirmDiv = document.createElement("div");
+contentConfirmDiv.className = "content-order";
 
+confirmMsg.appendChild(contentConfirmDiv)
 
+content = '';
 
-contentConfirmMsg = '';
+content += `
 
-contentConfirmMsg += `
+<p class="confirmation">Merci pour votre achat ${userName}!</p>
 
-<p>Merci pour votre achat ${userName}!</p>
+<p class="confirmation">Prix total de votre commande: ${prixTotal}€</p>
 
-<p>Prix Total : ${prixTotal}€</p>
-
-<p>Votre identifiant de commande est : ${userOrderId}</p>
-
-
+<p class="confirmation">Votre identifiant de commande est le : ${userOrderId}</p>
 `
 
-confirmMsg.innerHTML = contentConfirmMsg;
+contentConfirmDiv.innerHTML = content;
 
 }

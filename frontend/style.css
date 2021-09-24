@@ -1,6 +1,6 @@
 body {
     margin: auto;
-    background-color: rgb(204, 197, 204);
+    background-color: rgb(245, 239, 239);
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 17px;
    
@@ -327,6 +327,34 @@ aside > img {
     flex-wrap: wrap;
 }
 
+
+/* PAGE CONFIRMATION */
+
+.main-confirmation {
+   
+    padding: 15px;
+
+}
+
+.orderConfirmation {
+   
+    display: flex;
+    justify-content: center;
+   
+    
+}
+
+.content-order {
+    text-align: left;
+    background-color:#cfe0ce;
+    border-radius: 15px;
+    margin-top: 20px;
+    padding: 30px;
+}
+
+.confirmation {
+    margin:10px;
+}
 
 
 
