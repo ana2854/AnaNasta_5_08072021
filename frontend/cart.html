@@ -1,124 +1,122 @@
 <!DOCTYPE html>
-<html lang="fr">  
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
 
-    <head>
-            <meta charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" href="style.css" />
 
-            <link rel="stylesheet" type="text/css" href="style.css">
+    <!--Ajout d'un lien qui va servir pour mettre les icônes dans mon site-->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+      integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
+      crossorigin="anonymous"
+    />
 
-               
-                <!--Ajout d'un lien qui va servir pour mettre les icônes dans mon site-->
-            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <script defer src="js/cart.js"></script>
 
-            <script defer src="js/cart.js"></script>
+    <title>Cart</title>
+  </head>
 
-            <title> Cart  </title>
-
-    </head>
-
-<body>
-
-   
-
-        
+  <body>
     <header class="header-banniere">
-        
-        <div class="nameLogo">
-            <a href="index.html"><p>Ornicoco</p></a> 
-        </div>
+      <div class="nameLogo">
+        <a href="index.html"><p>Ornicoco</p></a>
+      </div>
 
-        <div class="cartLogo">
-            <i class="fas fa-shopping-cart"></i>
-            
-        </div>
-    
-    
+      <div class="cartLogo">
+        <i class="fas fa-shopping-cart"></i>
+      </div>
     </header>
 
+    <div class="main">
+      <div id="cart-empty"></div>
 
- <div class="main">
+      <div id="cart-products"></div>
 
-    <div id="cart-empty"></div>
+      <div id="total-price"></div>
 
-    <div id="cart-products"> </div>
+      <div id="number-of-products"></div>
 
-    <div id="total-price"></div>
-
-    <div id="number-of-products"></div>
-
-    <div id="form">
-        
-        <form id="formbox" name="formbox" action="" method="POST" >
-
-        <p>Remplissez le formulaire pour valider votre commande</p>
+      <div id="form">
+        <form id="formbox" name="formbox" action="" method="POST">
+          <p>Remplissez le formulaire pour valider votre commande</p>
 
           <div class="form_item">
             <label for="firstname">
-            <p>Prénom</p>
-            <input id="firstname" name="firstname" type="text" placeholder="Votre prénom" required>
-            <small id="errorFirstName" ></small>
+              <p>Prénom</p>
+              <input
+                id="firstname"
+                name="firstname"
+                type="text"
+                placeholder="Votre prénom"
+                required
+              />
+              <small id="errorFirstName"></small>
             </label>
-           
           </div>
 
           <div class="form_item">
             <label for="lastname">
-            <p>Nom de famille</p>
-            <input id="lastname" name="lastname" type="text" placeholder="Votre nom de famille">
+              <p>Nom de famille</p>
+              <input
+                id="lastname"
+                name="lastname"
+                type="text"
+                placeholder="Votre nom de famille"
+              />
             </label>
             <small id="errorLastName"></small>
           </div>
 
           <div class="form_item">
             <label for="address">
-            <p>Adresse</p>
-            <input id="address" name="address" type="text" placeholder="Votre addresse" required>
+              <p>Adresse</p>
+              <input
+                id="address"
+                name="address"
+                type="text"
+                placeholder="Votre addresse"
+                required
+              />
             </label>
             <small id="errorAddress"></small>
           </div>
 
           <div class="form_item">
             <label for="city">
-            <p>Ville</p>
-            <input id="city" name="city" type="text" placeholder="Votre ville" required>
+              <p>Ville</p>
+              <input
+                id="city"
+                name="city"
+                type="text"
+                placeholder="Votre ville"
+                required
+              />
             </label>
             <small id="errorCity"></small>
           </div>
 
-          <div class="form_item">       
-          <label for="email">
-          <p>Email</p>
-          <input id="email" type="text" name="email" placeholder="Votre e-mail" >
-          <small id="errorEmail"></small>
-          </label>
+          <div class="form_item">
+            <label for="email">
+              <p>Email</p>
+              <input
+                id="email"
+                type="text"
+                name="email"
+                placeholder="Votre e-mail"
+              />
+              <small id="errorEmail"></small>
+            </label>
           </div>
 
           <p class="remplir-champs"></p>
 
-        
-          
           <div class="commander">
             <button id="btn-commander" type="submit">Commander</button>
-        </div>
-
-         </form>
-   
-       
-    
-
-
-
+          </div>
+        </form>
+      </div>
     </div>
-
-
-        
-
-
-
-    </div>
-
-</body>
-
+  </body>
 </html>
-
-    

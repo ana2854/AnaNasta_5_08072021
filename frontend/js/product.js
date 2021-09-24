@@ -1,37 +1,34 @@
-AfficherUnProduit()
+AfficherUnProduit();
 
 //J'utilise la fonction getArticle pour récupérer mes articles
 function getArticles() {
-    let id = window.location.search.slice(4)
-    console.log(id)
-    return fetch(`http://localhost:3000/api/teddies/${id}`)
-    // return fetch("http://localhost:3000/teddies/id du produit")
+  let id = window.location.search.slice(4);
+  console.log(id);
+  return (
+    fetch(`http://localhost:3000/api/teddies/${id}`)
+      // return fetch("http://localhost:3000/teddies/id du produit")
       .then(function (response) {
-       return response.json()
+        return response.json();
       })
       .catch(function (error) {
-        alert(error)
+        alert(error);
       })
+  );
 }
 
-//Affichage de l'ensemble de mes produits 
+//Affichage de l'ensemble de mes produits
 async function AfficherUnProduit() {
+  const produit = await getArticles();
 
-    const produit = await getArticles()
-  
-    let divOursInfo = document.querySelector('#produit .ours.info')
+  let divOursInfo = document.querySelector("#produit .ours.info");
 
-    let contentOurs = '';
+  let contentOurs = "";
 
-    contentOurs += 
+  contentOurs +=
+    //Récupération de mes données dans la page produit
+    "<img" + " id=" + produit._id + " src=" + produit.imageUrl + ">";
 
-    //Récupération de mes données dans la page produit 
-    "<img" +
-            " id="+ produit._id +
-            " src=" + produit.imageUrl + 
-            ">";
-    
-    contentOurs+= `
+  contentOurs += `
     <p> Nom :   ${produit.name}  </p>
     
     <p> Description :  ${produit.description} </p>
@@ -57,47 +54,48 @@ async function AfficherUnProduit() {
             <button class="ajout-produit" type="button">Ajouter au panier</button>
     </div> `;
 
-divOursInfo.innerHTML = contentOurs;
+  divOursInfo.innerHTML = contentOurs;
 
-// ADD EVENT LISTENER sur le bouton ajout-produit pour ajouter des produits au panier
-document.getElementsByClassName('ajout-produit')[0].addEventListener('click', function (add){
-    add.preventDefault() 
+  // ADD EVENT LISTENER sur le bouton ajout-produit pour ajouter des produits au panier
+  document
+    .getElementsByClassName("ajout-produit")[0]
+    .addEventListener("click", function (add) {
+      add.preventDefault();
 
-    
-    //Données sauvegardées dans mon local storage
-   let dataSaved = localStorage.getItem("panier");
-  
-   //initialisation de mon panier : clé intitulé panier ainsi que son contenu 
-    if (dataSaved=== null) {
+      //Données sauvegardées dans mon local storage
+      let dataSaved = localStorage.getItem("panier");
+
+      //initialisation de mon panier : clé intitulé panier ainsi que son contenu
+      if (dataSaved === null) {
         let cart = [];
-        cart.push(produit)
+        cart.push(produit);
         localStorage.setItem("panier", JSON.stringify(cart));
-
-    }else {
-      
+      } else {
         let cart = JSON.parse(dataSaved);
         cart.push(produit);
         localStorage.setItem("panier", JSON.stringify(cart));
-    }
+      }
 
-      document.getElementsByClassName("ajout-produit")[0].addEventListener("click",(e) => {
-        e.preventDefault();
-        notifAjoutProduit()
-        console.log(notifAjoutProduit)
-    
-    });
+      document
+        .getElementsByClassName("ajout-produit")[0]
+        .addEventListener("click", (e) => {
+          e.preventDefault();
+          notifAjoutProduit();
+          console.log(notifAjoutProduit);
+        });
 
-    function notifAjoutProduit() {
+      function notifAjoutProduit() {
         let notif = document.createElement("p");
         let container = document.getElementsByClassName("container");
         container.appendChild(notif);
-        notif.classList("notif-ajout-produit")
-        notif.innerHTML ="Vous avez ajouté un produit dans le panier";
+        notif.classList("notif-ajout-produit");
+        notif.innerHTML = "Vous avez ajouté un produit dans le panier";
 
         setTimeout(() => {
-            notif.remove()
+          notif.remove();
         }, 3000);
 
         return notif;
-    } ;
-})}
+      }
+    });
+}

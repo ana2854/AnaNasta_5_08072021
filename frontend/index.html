@@ -1,73 +1,57 @@
 <!DOCTYPE html>
-<html lang="fr">  
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
 
-    <head>
-            <meta charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" href="style.css" />
 
-            <link rel="stylesheet" type="text/css" href="style.css">
+    <!--Ajout d'un lien qui va servir pour mettre les icônes dans mon site-->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+      integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
+      crossorigin="anonymous"
+    />
 
-               
-                <!--Ajout d'un lien qui va servir pour mettre les icônes dans mon site-->
-            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <script defer src="js/index.js"></script>
 
-            <script defer src="js/index.js"></script>
+    <title>Accueil</title>
+  </head>
 
-            <title> Accueil  </title>
-
-    </head>
-
-<body>
-
+  <body>
     <header class="header-banniere">
-        
-        <div class="nameLogo">
-            <p>Ornicoco</p> 
-        </div>
+      <div class="nameLogo">
+        <p>Ornicoco</p>
+      </div>
 
- <a href="cart.html">
+      <a href="cart.html">
         <div class="cartLogo">
-           
-                <i class="fas fa-shopping-cart"></i>
-                <span class="cart-quantity " value="1"></span>
+          <i class="fas fa-shopping-cart"></i>
+          <span class="cart-quantity" value="1"></span>
         </div>
       </a>
-    
     </header>
 
     <aside class="header-image">
-        
-        <div class="presentation">
-            <p> Découvrez les créations uniques d'ours en peluche,
-                faites à la main depuis 20 ans en France. </p>
-       </div>
+      <div class="presentation">
+        <p>
+          Découvrez les créations uniques d'ours en peluche, faites à la main
+          depuis 20 ans en France.
+        </p>
+      </div>
 
-        <img src="img/teddy-bear-page-accueil.jpg" alt="ours en peluche tenant une fleur jaune">
-    
+      <img
+        src="img/teddy-bear-page-accueil.jpg"
+        alt="ours en peluche tenant une fleur jaune"
+      />
     </aside>
 
-    
-
-
     <section id="ensemble-produits">
+      <header class="header-produits">
+        <h1>Choisissez votre produit</h1>
+      </header>
 
-            <header class="header-produits">
-                <h1>Choisissez votre produit </h1>
-            </header>
-
-        
-
-        <div id="peluches">
-
-      
-
-         
-        </div>
-
-    
+      <div id="peluches"></div>
     </section>
-
-
-   
-</body>
-
+  </body>
 </html>
