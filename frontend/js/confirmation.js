@@ -9,7 +9,10 @@ let userName = localStorage.getItem("nom");
 
 let userOrderId = localStorage.getItem("idCommande");
 
-
+let prixTotal = 0;
+contenuPanier.forEach(item => {
+prixTotal += item.price;
+})
 
 //Affichage message de confirmation
 let confirmMsg = document.getElementsByClassName("orderConfirmation")[0];
@@ -24,9 +27,11 @@ contentConfirmMsg += `
 
 <p>Merci pour votre achat ${userName}!</p>
 
+<p>Prix Total : ${prixTotal}€</p>
+
 <p>Votre identifiant de commande est : ${userOrderId}</p>
 
-<p>Récapitulatif de votre commande : ${contenuPanier} </p>
+
 `
 
 confirmMsg.innerHTML = contentConfirmMsg;

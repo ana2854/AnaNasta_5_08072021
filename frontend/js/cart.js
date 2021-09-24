@@ -16,8 +16,6 @@ let dataSaved = JSON.parse(localStorage.getItem("panier"));
           console.log("pas de produit dans le panier")
         }
 
-
-    
         function aucunProduit() {
            let idEmpty = document.getElementById("cart-empty")
            let paragrapheEmpty = document.createElement("p");
@@ -56,7 +54,6 @@ let dataSaved = JSON.parse(localStorage.getItem("panier"));
               let chosenProducts = '';
 
               chosenProducts +=  
-
               `
               <img id="${dataSaved[i]._id}" src="${dataSaved[i].imageUrl}"/>
               <p> Nom : ${(dataSaved[i].name)}
