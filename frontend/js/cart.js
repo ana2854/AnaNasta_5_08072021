@@ -1,7 +1,9 @@
 
-
-     // Si le local storage n'est pas vide alors afficher les produits choisis dans le panier + afficher le prix total + valider le formulaire
-       if (typeof(Storage) !== "undefined" && typeof(Storage) !== null) {
+let dataSaved = JSON.parse(localStorage.getItem("panier"));
+  
+    // Si le local storage n'est pas vide alors afficher les produits choisis dans le panier + afficher le prix total + valider le formulaire +compter le nombre d'articles + retrouver l'id
+       //if (typeof(Storage) !== "undefined" && typeof(Storage) !== null) {//
+        if (dataSaved) {
        // récupère les datas 
        affichageProduitsChoisis()
        affichagePrixTotal()
@@ -11,22 +13,18 @@
 
         } else {
           aucunProduit();
+          console.log("pas de produit dans le panier")
         }
 
 
- let a = document.getElementById("btn-remove-product")
-
-
-          a.addEventListener("click", function(){
-            let div = document.getElementsByClassName("ours panier")
-              div.remove(this);
-            return '';
-          }) 
     
         function aucunProduit() {
-           let empty = document.getElementById("cart-empty")
-           empty.innerHTML = "Votre panier est vide";
-            console.log(empty)
+           let idEmpty = document.getElementById("cart-empty")
+           let paragrapheEmpty = document.createElement("p");
+           paragrapheEmpty.className="aucun-produit";
+           idEmpty.appendChild(paragrapheEmpty)
+           paragrapheEmpty.innerHTML = "Votre panier est vide";
+            console.log(paragrapheEmpty)
         }
 
         function retrieveIdProduct () {
@@ -66,8 +64,8 @@
 
               <p> Prix : ${dataSaved[i].price} €  </p>
 
-              <div="btn-danger">
-              <button id="btn-remove-product">Supprimer</button>
+              <div class="btn-danger">
+              <button class="btn-delete-product">Supprimer</button>
               </div>
             
                 
@@ -80,26 +78,27 @@
         // FONCTION POUR LE PRIX TOTAL
         function affichagePrixTotal () {
 
-
             let dataSaved = JSON.parse(localStorage.getItem("panier"))
 
-            let idPrixTotal = document.getElementById("total-price")
+             let idPrixTotal = document.getElementById("total-price")
             let divPrixTotal = document.createElement("div");
             divPrixTotal.className = "total-price-child";
             idPrixTotal.appendChild(divPrixTotal);
 
             let prixTotal = 0;
             dataSaved.forEach(item => {
-            prixTotal += item.price
-            })
+            prixTotal += item.price;
 
+              console.log(prixTotal)
+         
+            })
+              
             content = '';
 
             content += 
-            `<p>Prix Total : ${prixTotal}€</p>`;
+            `<p class="productsTotalPrice">Prix Total : ${prixTotal}€</p>`;
 
             divPrixTotal.innerHTML = content;
-          
           }
           
             
@@ -299,33 +298,40 @@
         .then(response => response.json())
         .then(json=> {
 
-        let user = infosCommande.contact.lastName
 
-        localStorage.setItem("NomUser", user)
-        console.log(user)
-        console.log(typeof user)
-          
-        let orderId = json.orderId;
-        console.log (typeof orderId)
+       /*
+        let confirmationPrixTotal= document.getElementsByClassName("productsTotalPrice")[0].textContent;
+        console.log(confirmationPrixTotal)
+        console.log(typeof confirmationPrixTotal)
+        */
 
-        localStorage.setItem("IdCommande", orderId)
+        function getInfosCommande () {
+      
+      //USERNAME
+        let userName = infosCommande.contact.lastName
 
-
-        /*
+        localStorage.setItem("nom", userName)
+        console.log(userName)
         
+      // ORDER ID
+        let orderId = json.orderId;
+
+        localStorage.setItem("idCommande", orderId)
+        
+        }
+
+        getInfosCommande();
+
+      // REDIRECTION VERS CONFIRMATION
         console.log(window.location.pathname)
         
         window.location.pathname=window.location.pathname.replace("cart.html", "confirmation.html");
+        }
 
-            */
-        
-
-        })
+        )
 
 
         .catch(error =>console.error(error))
-    
-        
   }
 
 else {

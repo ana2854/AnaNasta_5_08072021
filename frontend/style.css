@@ -162,26 +162,15 @@ aside > img {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-   
-
-   
 }
+
+
 
 .select {
     text-align: center;
 }
 
-.minus-btn, .plus-btn{
-    width: 50px;
-    height: 35px;
-    border: 1px solid #000;
-    color: #000;
-    border-radius: 0;
-    background: #fff;
-    font-weight: bold;
 
-    cursor: pointer;
-}
 
 .btn-ajout-panier, .btn-clear {
     display: flex;
@@ -229,6 +218,12 @@ aside > img {
     text-align: center;
 }
 
+.aucun-produit {
+    text-align: center;
+    background-color: rgb(184, 231, 240);
+    padding: 15px;
+}
+
 .ours.panier {
     cursor: pointer;
     width: 60%;
@@ -238,6 +233,11 @@ aside > img {
     border-radius: 10px;
     height: 60px;
     width: 15%;
+}
+
+.quantité-de-produit {
+   text-align: center;
+    width: 60%;
 }
 
 
@@ -256,6 +256,11 @@ aside > img {
     padding: 30px;
     font-weight: bold;
     border-radius: 5px;
+}
+
+.btn-delete-product {
+    padding: 10px;
+    border-radius: 10px;
 }
 
 
