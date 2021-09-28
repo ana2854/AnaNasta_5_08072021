@@ -94,7 +94,7 @@ function NbArticle() {
   let numberOfProduct = dataSaved.length;
   for (let i = 0; i < dataSaved.length; i++) {
     let quantity = "";
-    quantity += `<p>Vous avez ${numberOfProduct} d'articles dans votre panier </p>`;
+    quantity += `<p>Vous avez ${numberOfProduct} articles dans votre panier </p>`;
 
     divQuantity.innerHTML = quantity;
   }

@@ -28,7 +28,7 @@ async function getInfosCommande() {
 
 <p class="titre-confirmation"> Confirmation de votre commande </p>
 
-<p class="confirmation">Merci pour votre achat M/Mme : ${userName}!</p>
+<p class="confirmation">Merci pour votre achat M/Mme ${userName}!</p>
 
 <p class="confirmation">Prix total de votre commande: ${prixTotal}€</p>
 
