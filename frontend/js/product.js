@@ -54,7 +54,7 @@ async function AfficherUnProduit() {
             <button class="ajout-produit" type="button">Ajouter au panier</button>
     </div> `;
 
-  divOursInfo.innerHTML = contentOurs;
+    divOursInfo.innerHTML = contentOurs;
 
   // ADD EVENT LISTENER sur le bouton ajout-produit pour ajouter des produits au panier
   document
@@ -75,27 +75,5 @@ async function AfficherUnProduit() {
         cart.push(produit);
         localStorage.setItem("panier", JSON.stringify(cart));
       }
-
-      document
-        .getElementsByClassName("ajout-produit")[0]
-        .addEventListener("click", (e) => {
-          e.preventDefault();
-          notifAjoutProduit();
-          console.log(notifAjoutProduit);
-        });
-
-      function notifAjoutProduit() {
-        let notif = document.createElement("p");
-        let container = document.getElementsByClassName("container");
-        container.appendChild(notif);
-        notif.classList("notif-ajout-produit");
-        notif.innerHTML = "Vous avez ajouté un produit dans le panier";
-
-        setTimeout(() => {
-          notif.remove();
-        }, 3000);
-
-        return notif;
-      }
-    });
+  });
 }

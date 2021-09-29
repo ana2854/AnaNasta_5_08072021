@@ -134,7 +134,7 @@ aside > img {
 }
 
 .ours.info {
-  width: 50%;
+  width: 40%;
 
   border-radius: 10px;
 
@@ -192,6 +192,8 @@ aside > img {
 
 /* CART PAGE */
 
+
+
 .cart-empty {
   text-align: center;
 }
@@ -204,7 +206,8 @@ aside > img {
 
 .ours.panier {
   cursor: pointer;
-  width: 60%;
+  width: 30%;
+
 }
 
 .ours.panier img {
@@ -219,16 +222,22 @@ aside > img {
 }
 
 .total-price-child {
-  padding: 50px;
+  width: 50%;
+  display: flex;
+  margin-left: 20px;
+  justify-content: center;
+  padding: 15px 0 15px 0;
 }
+
+
 
 .total-price-child > p {
   background-color: rgb(167, 164, 164);
-  width: fit-content;
   color: white;
   padding: 30px;
   font-weight: bold;
   border-radius: 5px;
+  width: 30%;
 }
 
 .btn-delete-product {
@@ -249,8 +258,9 @@ aside > img {
   border-radius: 15px;
   border: 1px solid grey;
   padding: 20px;
-  width: 60%;
+  width: 50%;
   background-color: #e8ffdd;
+  margin-left: 20px;
   margin-bottom: 30px;
   display: flex;
   justify-content: center;
