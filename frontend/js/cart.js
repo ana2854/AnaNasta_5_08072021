@@ -121,7 +121,8 @@ function validationFormulaire() {
     const firstnameValue = document.getElementById("firstname").value;
     e.preventDefault();
 
-    let regexPrenomNomVille = /^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/;
+    let regexPrenomNomVille = /^[a-zA-Z-\-àâäÂÄéèêëÊËîïÎÏôöÔÖùûüÛÜ\s"]+$/
+    
 
     if (regexPrenomNomVille.test(firstnameValue)) {
       smallFirstName.innerHTML = "Prénom valide";
