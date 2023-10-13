@@ -1,6 +1,6 @@
 # Orinoco
 
-[Visuel du projet](doc/visuel-p5.pdf)
+[Visuel du projet](frontend/doc/visuel-p5.pdf)
 
 ### Description
 
@@ -8,7 +8,7 @@ Application e-commerce permettant de choisir des produits, de les ajouter au pan
 
 ### Documentation Technique
 
-Plus d'informations sur les spécifications et les contraintes du projet dans [ce document](doc/doc-p5.pdf).
+Plus d'informations sur les spécifications et les contraintes du projet dans [ce document](frontend/doc/doc-p5.pdf).
 
 ### Technologies Utilisées
 
